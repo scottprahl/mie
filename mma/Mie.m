@@ -10,9 +10,9 @@
 
 (* :Context:Optics`Mie`*)
 
-(* :Package Version:1.6*)
+(* :Package Version:1.7*)
 
-(* :Copyright:Copyright 2011, Oregon Medical Laser Center*)
+(* :Copyright:Copyright 2012, Scott Prahl*)
 
 (* :History:Originally written by Scott Prahl, November 2002 *)
 
@@ -20,33 +20,33 @@
 
 BeginPackage["Optics`Mie`"]
 
-Mie::usage = "Mie[x,nreal,nimag,{cos_angles}] returns returns {Qsca,g,Qext,Qback,{S1real},{S1imag},{S2real},{S2imag}} for spheres with refractive index n=n-ik and size parameter of x for {Cos[angles]}."
+Mie::usage = "Mie[x,n] and Mie[x,n,{cos(angles)}] returns the Mie scattering parameters {Qsca,g,Qext,Qback} or {Qsca,g,Qext,Qback,{S1real},{S1imag},{S2real},{S2imag}} for spheres with refractive index n=n-ik, size parameter x, and list of cosines of angles."
 
-MieMus::usage = "MieMus[f,d,n,lambda] and MieMus[f,d,n,m,lambda] calculate the scattering coefficient (per mm) for a sphere with diameter d (in nanometers), index of refraction n=n-ik (can be complex), in a medium with refractive index m, at the wavelength lambda (in nanometers) for a volume fraction f (f=0.41 means 41% spheres by volume)."
+MieMus::usage = "MieMus[f,d,n,lambda] and MieMus[f,d,n,m,lambda] calculate the scattering coefficient (per mm) for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with refractive index m, at the wavelength lambda (in nanometers in vacuum) for a volume fraction f (f=0.41 means 41% spheres by volume)."
 
-MieMusp::usage = "MieMusp[f,d,n,lambda] and MieMusp[f,d,n,m,lambda] calculate the reduced scattering coefficient (per mm) for a sphere with diameter d (in nanometers), index of refraction n=n-ik (can be complex), in a medium with refractive index m, at the wavelength lambda (in nanometers) for a volume fraction f (f=0.41 means 41% spheres by volume)."
+MieMusp::usage = "MieMusp[f,d,n,lambda] and MieMusp[f,d,n,m,lambda] calculate the reduced scattering coefficient (per mm) for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with refractive index m, at the wavelength lambda (in nanometers in vacuum) for a volume fraction f (f=0.41 means 41% spheres by volume)."
 
-MieG::usage = "MieG[d,n,lambda] and MieG[d,n,m,lambda] calculate the scattering anisotropy for a sphere with diameter d (in nanometers), index of refraction n=n-ik (can be complex), in a medium with real index m, at the wavelength lambda (in nanometers)."
+MieG::usage = "MieG[d,n,lambda] and MieG[d,n,m,lambda] calculate the scattering anisotropy for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
 
-MieQsca::usage = "MieQsca[d,n,lambda] and MieQsca[d,n,m,lambda] calculate the scattering efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik (can be complex), in a medium with real index m, at the wavelength lambda (in nanometers)."
+MieQsca::usage = "MieQsca[d,n,lambda] and MieQsca[d,n,m,lambda] calculate the scattering efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
 
-MieQscap::usage = "MieQscap[d,n,lambda] and MieQscap[d,n,m,lambda] calculate the reduced scattering efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik (can be complex), in a medium with real index m, at the wavelength lambda (in nanometers)."
+MieQscap::usage = "MieQscap[d,n,lambda] and MieQscap[d,n,m,lambda] calculate the reduced scattering efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
 
-MieQext::usage = "MieQext[d,n,lambda] and MieQext[d,n,m,lambda] calculate the extinction efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik (can be complex), in a medium with real index m, at the wavelength lambda (in nanometers)."
+MieQext::usage = "MieQext[d,n,lambda] and MieQext[d,n,m,lambda] calculate the extinction efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
 
-MieQback::usage = "MieQback[d,n,lambda] and MieQback[d,n,m,lambda] calculate the back-scattering efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik (can be complex), in a medium with real index m, at the wavelength lambda (in nanometers)."
+MieQback::usage = "MieQback[d,n,lambda] and MieQback[d,n,m,lambda] calculate the back-scattering efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
 
-MiePhaseFunction::usage = "MiePhaseFunction[d,n,lambda,{angles}] and MiePhaseFunction[d,n,m,lambda,{angles}] returns {{S1},{S2}} for a sphere with diameter d (in nanometers), index n, in a medium with real index m, at each of the directions in radians {angles} for light with wavelength lambda (in nanometers in a vacuum)."
+MiePhaseFunction::usage = "MiePhaseFunction[d,n,lambda,{cos(angles)}] and MiePhaseFunction[d,n,m,lambda,{angles}] returns {{S1},{S2}} for a sphere with diameter d (in nanometers), index n, in a medium with real index m, at each of the directions {cos(angles)} for light with wavelength lambda (in nanometers in a vacuum)."
 
-MiePhasePar::usage = "MiePhasePar[d,n,lambda,{angles}] and MiePhasePar[d,n,m,lambda,{angles}] returns the phase function for incident light polarized parallel to the plane of incidence on a sphere with diameter d (in nanometers), complex index n, in a medium with real index m, at each of the directions in radians {angles} for light with wavelength lambda (in nanometers in a vacuum)."
+MiePhasePar::usage = "MiePhasePar[d,n,lambda,{cos(angles)}] and MiePhasePar[d,n,m,lambda,{angles}] returns the phase function for incident light polarized parallel to the plane of incidence on a sphere with diameter d (in nanometers), complex index n, in a medium with real index m, at each of the directions {cos(angles)} for light with wavelength lambda (in nanometers in a vacuum)."
 
-MiePhasePer::usage = "MiePhasePer[d,n,lambda,{angles}] and MiePhasePer[d,n,m,lambda,{angles}] returns the phase function for light polarized perpendicular to the plane of incidence on a sphere with diameter d (in nanometers), complex index n, in a medium with real index m, at each of the directions in radians {angles} for light with wavelength lambda (in nanometers in a vacuum)."
+MiePhasePer::usage = "MiePhasePer[d,n,lambda,{cos(angles)}] and MiePhasePer[d,n,m,lambda,{cos(angles)}] returns the phase function for light polarized perpendicular to the plane of incidence on a sphere with diameter d (in nanometers), complex index n, in a medium with real index m, at each of the directions {cos(angles)} for light with wavelength lambda (in nanometers in a vacuum)."
 
-MiePhaseUnpolarized::usage = "MiePhaseUnpolarized[d,n,lambda,{angles}] and MiePhaseUnpolarized[d,n,m,{angles}] returns the phase function for unpolarized light incident on a sphere with diameter d (in nanometers), complex index n, in a medium with real index m, at each of the directions in radians {angles} for light with wavelength lambda (in nanometers in a vacuum)."
+MiePhaseUnpolarized::usage = "MiePhaseUnpolarized[d,n,lambda,{cos(angles)}] and MiePhaseUnpolarized[d,n,m,{cos(angles)}] returns the phase function for unpolarized light incident on a sphere with diameter d (in nanometers), complex index n=n-ik, in a medium with real index m, at each of the directions in radians {angles} for light with wavelength lambda (in nanometers in a vacuum)."
 
-MiePhasePolarization::usage = "MiePhasePolarization[d,n,lambda,{angles}] and MiePhasePolarization[d,n,m,{angles}] returns the polarization state for unpolarized light incident on a sphere with diameter d (in nanometers), complex index n, in a medium with real index m, at each of the directions in radians {angles} for light with wavelength lambda (in nanometers in a vacuum)."
+MiePhasePolarization::usage = "MiePhasePolarization[d,n,lambda,{cos(angles)}] and MiePhasePolarization[d,n,m,{cos(angles)}] returns the polarization state for unpolarized light incident on a sphere with diameter d (in nanometers), complex index n=n-ik, in a medium with real index m, at each of the directions in radians {angles} for light with wavelength lambda (in nanometers in a vacuum)."
 
-MieMatrix::usage = "MieMatrix[d,n,m,lambda,theta] and MieMatrix[d,n,m,lambda,theta,phi] return the Mueller matrix for a sphere with diameter d (in nanometers), index n-ik, in a medium with real index m, for light with wavelength lambda (in nanometers in a vacuum) for light scattered at an angle theta (with azimuthal angle phi).\n\nTo find the Stokes vector for an horizontally polarized light and analyzed by a vertical polarizer just do PolarizerMatrixV . MieMatrix[x,n,theta,phi] . StokesVectorH"
+MieMatrix::usage = "MieMatrix[d,n,m,lambda,theta] and MieMatrix[d,n,m,lambda,theta,phi] return the Mueller matrix for a sphere with diameter d (in nanometers), index n=n-ik, in a medium with real index m, for light with wavelength lambda (in nanometers in a vacuum) for light scattered at an angle theta (with azimuthal angle phi).\n\nTo find the Stokes vector for an horizontally polarized light and analyzed by a vertical polarizer just do PolarizerMatrixV . MieMatrix[x,n,theta,phi] . StokesVectorH"
 
 StokesVectorH::usage = "StokesVectorH is the Stokes vector for horizontal polarized light"
 
