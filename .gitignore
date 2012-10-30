@@ -35,5 +35,21 @@
 .Spotlight-V100
 .Trashes
 Icon?
+
+# specific files for this project
+#
+mie
+miecyl
+mma/Mie
+src/first.pdf
+src/mie
+src/mie_doc.c
+src/mie_doc.tex
+src/miecyl
+src/test_latex
+src/test_mie
+src/test_mie_lobatto
+src/version.tex
+
 ehthumbs.db
 Thumbs.db
