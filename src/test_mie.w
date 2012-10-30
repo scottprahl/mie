@@ -40,29 +40,30 @@ calculated correctly.
 	struct c_complex y, z, *D;
 	long nstop;
 	
-	printf("Testing the logarithmic derivative functions\n");
-	printf("The result should for D_9(1.0) = 9.95228198\n");
-	z = c_set(1,0.0);
-	y = Lentz_Dn(z,9);
-	printf("The actual value               = %11.8f +i%12.8f\n\n",y.re, y.im);
+	printf("\n***********************************************\n");
+	printf("Zeroth test for logarithmic derivative\n");
+	printf("   The result should for D_9(1.0) = 9.95228198\n");
+	z = c_set(1.0,0.0);
+	y = Lentz_Dn(z,9L);
+	printf("   The actual value               = %11.8f +i%12.8f\n\n",y.re, y.im);
 	
 	z= c_set(62*1.28,-62*1.37);
 	nstop = 50;
 	
 	D = new_carray(nstop);
-	printf("For n = %ld \n", nstop);
-	printf("For j = %ld \n", 10L);
-	printf("For z = %10.5f +i %10.5f\n",z.re,z.im);
+	printf("   For n = %ld \n", nstop);
+	printf("   For j = %ld \n", 10L);
+	printf("   For z = %10.5f +i %10.5f\n",z.re,z.im);
 	
-	printf("Mathematica                 gives %10.6f +i %10.6f\n",0.004087,1.0002620);
-	y = Lentz_Dn(z,10);
-	printf("Dn[10] continued fraction   gives %10.6f +i %10.6f\n",y.re,y.im);
+	printf("   Mathematica                 gives %10.6f +i %10.6f\n",0.004087,1.0002620);
+	y = Lentz_Dn(z,10L);
+	printf("   Dn[10] continued fraction   gives %10.6f +i %10.6f\n",y.re,y.im);
 	
 	Dn_up(z, nstop, D);
-	printf("Dn[10] upwards recurrence   gives %10.6f +i %10.6f\n",D[10].re,D[10].im);
+	printf("   Dn[10] upwards recurrence   gives %10.6f +i %10.6f\n",D[10].re,D[10].im);
 	
 	Dn_down(z, nstop, D);
-	printf("Dn[10] downwards recurrence gives %10.6f +i %10.6f\n",D[10].re,D[10].im);
+	printf("   Dn[10] downwards recurrence gives %10.6f +i %10.6f\n",D[10].re,D[10].im);
 	
 	free_carray(D);
 }
@@ -80,11 +81,12 @@ test data and
 	double x= 20;
 	double qext, qsca, qback, g;
 	
-	printf("\nSmall Mie Test\n");
+	printf("\n***********************************************\n");
+	printf("Small Mie Test\n");
 	printf("           calc    Wiscombe       calc   Wiscombe\n");
 	printf(" X         Qsca    Qsca            g         g\n");
 	
-	m=c_set(0.75, 0);
+	m=c_set(0.75, 0.0);
 	x=0.099;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.3f   % 8.6f % 8.6f   % 8.6f % 8.6f\n",x,qext,0.000007,g,0.001448);
@@ -92,7 +94,7 @@ test data and
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.3f   % 8.6f % 8.6f   % 8.6f % 8.6f\n",x,qext,0.000008,g,0.001507);
 
-	m=c_set(1.5, -1);
+	m=c_set(1.5, -1.0);
 	x=0.055;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.3f   % 8.6f % 8.6f   % 8.6f % 8.6f\n",x,qext,0.101491,g,0.000491);
@@ -108,7 +110,7 @@ test data and
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.3f   % 8.6f % 8.6f   % 8.6f % 8.6f\n",x,qext,0.000348,g,-0.397262);
 
-	m=c_set(0, -1e10);
+	m=c_set(0.0, -1e10);
 	x=0.099;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.3f   % 8.6f % 8.6f   % 8.6f % 8.6f\n",x,qext,0.000321,g,-0.397357);
@@ -124,59 +126,43 @@ book by Bohren and Huffman.  This is the only test that includes $Q_{\rm back}$.
 The angle stuff is not used. 
 @<First Mie Test@>=
 {
-double pi=3.14159265358979;
-long nangles, i;
-struct c_complex *s1, *s2, refractive_index;
-double *weights, *mu;
-double x, rho, qext, qsca, qback, g;
+    long nangles, i;
+    struct c_complex *s1, *s2, m;
+    double *w, *mu, x, rho, qext, qsca, qback, g;
 
-    printf("\nFirst Mie Test -- Bohren and Huffman pg 482\n");
-    @<Initialize Mie Test variables@>@;
+	nangles = 10;
+	m.re    = 1.55;
+	m.im    = 0.0;
+	x       = 5.213;
+	rho     = 2 * x * (m.re - 1);
+	
+	printf("\n***********************************************\n");
+	printf("First Mie Test -- cf. Bohren and Huffman pg 482\n");
+	printf("    index of medium      %7.4f\n", 1.0);
+	printf("    real index of sphere %7.4f\n", m.re);
+	printf("    imag index of sphere %7.4f\n", m.im);
+	printf("    quadrature angles    %ld\n\n", nangles);
+	
+	s1 = new_carray(nangles);
+	s2 = new_carray(nangles);
+	mu = new_darray(nangles);
+	w  = new_darray(nangles);
 
-    @<Print header@>@;
-
-    Mie (x, refractive_index, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
-
-    printf( "%7.3f %10.6f %10.6f %10.6f \n", 5.213, 3.10543, 3.10543, 2.92534);
-    printf( "%7.3f %10.6f %10.6f %10.6f %10.6f \n", x, qsca, qext, qback, g);
-
-  free_darray (mu);
-  free_darray(weights);
-  free_carray (s1);
-  free_carray (s2);
+	Lobatto (0.0, 3.1415926535, mu, w, nangles);
+	for (i = 0; i < nangles; ++i)
+	  mu[i] = cos(mu[i]);
+	
+	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
+	
+	printf("    x        Qsca       Qext      Qback    g\n");
+	printf( "%7.3f %10.6f %10.6f %10.6f \n", 5.213, 3.10543, 3.10543, 2.92534);
+	printf( "%7.3f %10.6f %10.6f %10.6f %10.6f \n", x, qsca, qext, qback, g);
+	
+	free_darray(mu);
+	free_darray(w);
+	free_carray(s1);
+	free_carray(s2);
 }
-
-@ Allocate the memory needed for the quadrature angles and weights,
-then use Lobatto quadrature to fill them appropriately.
-
-@<Initialize Mie Test variables@>=
-  x = 5.213;
-  refractive_index=c_set(1.55, 0);
-  rho = 2 * x * (refractive_index.re - 1);
-
-  nangles = 10;
-  mu = new_darray (nangles);
-  weights = new_darray(nangles);
-  s1 = new_carray (nangles);
-  s2 = new_carray (nangles);
-
-  Lobatto (0, pi, mu, weights, nangles);
-  for (i = 0; i < nangles; ++i)
-    {
-      weights[i] *= sin (mu[i]) / 2;
-      mu[i] = cos (mu[i]);
-    }
-
-@ Print a header then the angles.  Make sure everything lines up.
-
-@<Print header@>=
-  printf("* Mie Scattering \n");
-  printf("* The real index of refraction of the sphere is %7.4g\n", refractive_index.re);
-  printf("* The imag index of refraction of the sphere is %7.4g\n", refractive_index.im);
-  printf("* The number of quadrature angles is %ld\n", nangles);
-  printf("*\n");
-
-  printf("*   x        Qsca       Qext      Qback    g\n");
 
 @ Another test that includes absorbing spheres is from the paper by Dave.
 His table 2 tabulates the absorption efficiency.
@@ -191,10 +177,11 @@ His table 2 tabulates the absorption efficiency.
 	double x= 50.0 * pi;
 	double qext, qsca, qback, g;
 	
-	printf("\nSecond Mie Test -- Dave Table 2\n");
+	printf("\n***********************************************\n");
+	printf("Second Mie Test -- Dave Table 2\n");
 	printf("          n                 Qa            Dave\n");
 	
-	m=c_set(1.342, 0);
+	m=c_set(1.342, 0.0);
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%10.5g%-+7.4fi    %10.5f    %10.5f\n", m.re,m.im, qext-qsca, 0.0);
 	
@@ -242,14 +229,15 @@ anisotropy calculation.
 	double x= 20;
 	double qext, qsca, qback, g;
 	
-	printf("\nThird Mie Test -- van de Hulst page 161\n");
+	printf("\n***********************************************\n");
+	printf("Third Mie Test -- van de Hulst page 161\n");
 	printf(" x          Qs    vdH       Qs*g   vdH\n");
 	
-	m=c_set(0, 0);
+	m=c_set(0.0, 0.0);
 	x=0.3;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.1f   %7.3f %7.3f   %7.3f %7.3f\n",x,qsca,0.028,qsca*g,-0.011);
-	ez_Mie(x,0, &qsca, &g);
+	ez_Mie(x,0.0, &qsca, &g);
 	printf("%4.1f   %7.3f %7.3f   %7.3f %7.3f\n",x,qsca,0.028,qsca*g,-0.011);
 	
 	x=1.0;
@@ -278,7 +266,8 @@ anisotropy calculation.
 	double x= 20;
 	double qext, qsca, qback, g;
 	
-	printf("\nFourth Mie Test -- van de Hulst page 277\n");
+	printf("\n***********************************************\n");
+	printf("Fourth Mie Test -- van de Hulst page 277\n");
 	printf(" x          Qs    vdH       Qs*g   vdH\n");
 	
 	m=c_set(3.41, -1.94);
@@ -291,7 +280,7 @@ anisotropy calculation.
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.1f   %7.3f %7.3f   %7.2f %7.2f\n",x,qsca,1.860,qsca*g,0.31);
 	
-	m=c_set(0, 0);
+	m=c_set(0.0, 0.0);
 	x=1.3;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.1f   %7.3f %7.3f   %7.2f %7.2f\n",x,qsca,2.266,qsca*g,-0.05);
@@ -311,7 +300,8 @@ allows complete code coverage.
 	double x;
 	double qext, qsca, qback, g;
 	
-	printf("\nFifth Mie Test -- Wiscombe\n");
+	printf("\n***********************************************\n");
+	printf("Fifth Mie Test -- Wiscombe\n");
 	
 	@<Wiscombe Non-absorbing spheres@>@;
 	@<Wiscombe Absorbing water spheres@>@;
@@ -396,7 +386,7 @@ allows complete code coverage.
 	printf("\n Yet More Absorbing Spheres m=(10-10i)\n");
 	printf("               Calc.     Wiscombe     Calc     Wiscombe\n");
 	printf("   x            Qs          Qs          g          g\n");
-	m=c_set(10, -10.00);
+	m=c_set(10.0, -10.00);
 	
 	x=1.0;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
@@ -453,11 +443,12 @@ allows complete code coverage.
 	mu = new_darray(nangles);
 	
 	for (i=0; i<nangles; i++) mu[i] = cos(pi*i/6.0);
-		
-	printf("\nSixth Mie Test -- Wiscombe\n");
+
+	printf("\n***********************************************\n");
+	printf("Sixth Mie Test -- Wiscombe\n");
 	printf("   angle       S1                    S2         \n");
 	x=1.0;
-	m=c_set(1.5,-1);
+	m=c_set(1.5,-1.0);
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	
 	printf(form,mu[0],s1[0].re,s1[0].im,s2[0].re,s2[0].im);
@@ -492,17 +483,18 @@ allows complete code coverage.
 	struct c_complex m;
 	double x,qext, qsca, qback, g,ref;
 	
-	printf("\nBackscattering Efficiency\n");
+	printf("\n***********************************************\n");
+	printf("Backscattering Efficiency\n");
 	printf("                                   Calc          reference\n");
 	printf("    X         m.re     m.im        Qsca          qsca          ratio\n");
 	
-	m=c_set(1.55, 0);
+	m=c_set(1.55, 0.0);
 	x   = 2*3.1415926535*0.525/0.6328;
 	ref = 2.92534;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%8.3f   % 8.4f % 8.4f   % 8e % 8e %8g\n",x,m.re,m.im,qback,ref,qback/ref);
 
-	m=c_set(0, -1000);
+	m=c_set(0.0, -1000.0);
 	x=0.099;
 	ref = (4.77373E-07*4.77373E-07 +  1.45416E-03*1.45416E-03)/x/x*4;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
@@ -516,7 +508,7 @@ allows complete code coverage.
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%8.3f   % 8.4f % 8.2f   % 8e % 8e %8.5f\n",x,m.re,m.im,qback,ref,qback/ref);
 
-	m=c_set(0.75, 0);
+	m=c_set(0.75, 0.0);
 	x=0.099;
 	ref = (1.81756E-08*1.81756E-08 + 1.64810E-04*1.64810E-04)/x/x*4;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
@@ -544,7 +536,7 @@ allows complete code coverage.
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%8.3f   % 8.4f % 8.4f   % 8e % 8e %8.5f\n",x,m.re,m.im,qback,ref,qback/ref);
 	
-	m=c_set(1.5, -1);
+	m=c_set(1.5, -1.0);
 	x=0.055;
 	ref = (7.66140E-05*7.66140E-05 +  8.33814E-05*8.33814E-05)/x/x*4;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);

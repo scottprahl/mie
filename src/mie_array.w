@@ -58,11 +58,11 @@ double * new_darray(long size)
 
   if (size<=0) array_error("Non-positive double array size chosen");
 
-  a = (double *) calloc(sizeof(double), (unsigned long) size);
+  a = (double *) calloc(sizeof(double), (unsigned long) size+2);
   if (a==NULL) array_error("Insufficient space to allocate array");
   
   a[0]=DBL_MIN;
-  a[size-1] = DBL_MAX;
+  a[size+1] = DBL_MAX;
   return a+1;
 }
 

@@ -104,8 +104,10 @@ int quiet = 0;
 
 double radius  = 0.525;
 double lambda_vac  = 0.6328;
+double lambda_vac_last  = 0.6328;
 double lambda  = 0.6328;
 long  nangles  = 0;
+long  nlambda  = 0;
 double density = 1;
 double n_medium = 1.0;
 m.re = 1.55;
@@ -118,7 +120,7 @@ m.im = 0.00;
 { 
 	char c;
 	double xopt;
-	while ((c = my_getopt(argc, argv, "h?qvm:l:n:r:i:o:d:p:")) != EOF) {
+	while ((c = my_getopt(argc, argv, "h?qvm:l:L:n:r:i:o:d:p:P:")) != EOF) {
 		switch (c) {
 
 			case 'r':
@@ -141,6 +143,11 @@ m.im = 0.00;
 				if (xopt>0) lambda_vac = xopt;
 				break;
 
+			case 'L':
+				sscanf(optarg,"%lf",&xopt);
+				if (xopt>0) lambda_vac_last = xopt;
+				break;
+
 			case 'i':
 				sscanf(optarg,"%lf",&xopt);
 				if (xopt<=0) m.im = xopt;
@@ -149,6 +156,13 @@ m.im = 0.00;
 			case 'p':
 				sscanf(optarg,"%lf",&xopt);
 				if (xopt>=0) nangles = (long) xopt;
+				nlambda = 0;
+				break;
+
+			case 'P':
+				sscanf(optarg,"%lf",&xopt);
+				if (xopt>=0) nlambda = (long) xopt;
+				nangles = 0;
 				break;
 
 			case 'd':
@@ -222,7 +236,7 @@ m.im = 0.00;
 @<Print header@>=
   printf("# Mie Scattering                # Version %s\n", Version);
   printf("# Oregon Medical Laser Center   # http://omlc.ogi.edu\n");
-  printf("# by Scott Prahl                # prahl@@bme.ogi.edu\n");
+  printf("# by Scott Prahl                # prahls@@ohsu.edu\n");
   printf("#\n");
 
 @ @<Print summary@>=
@@ -238,7 +252,7 @@ m.im = 0.00;
 	printf("# n_medium   \t%9.5f\t [---]         (refractive index of medium)\n",n_medium);
 	printf("# n_real     \t%9.5f\t [---]         (refractive index of sphere)\n",m.re);
 	printf("# n_imag     \t%9.5f\t [---]         (absorption of sphere)\n",m.im);
-	printf("# lambda_vac \t%9.5f\t [microns]     (wavelength in vaccuum)\n",lambda_vac);
+	printf("# lambda_vac \t%9.5f\t [microns]     (wavelength in vacuum)\n",lambda_vac);
 	printf("# density    \t%9.5f\t [#/micron^3]  (spheres per cubic micron)\n",density);
 	printf("#\n");
 	printf("# lambda     \t%9.5f\t [microns]     (wavelength in medium)\n",lambda);
@@ -324,7 +338,7 @@ m.im = 0.00;
 static void print_version(void)
 {
 	fprintf(stderr, "mie %s\n\n",Version);
-	fprintf(stderr, "Copyright (C) 2006 Free Software Foundation, Inc.\n");
+	fprintf(stderr, "Copyright (C) 2012 Free Software Foundation, Inc.\n");
 	fprintf(stderr, "This is free software; see the source for copying conditions.  There is NO\n");
 	fprintf(stderr, "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
 	fprintf(stderr, "\n\nWritten by Scott Prahl\n");
@@ -344,10 +358,12 @@ static void print_usage(void)
 	fprintf(stderr, "    -q                    # quiet --- omit output to stderr\n\n");
 	fprintf(stderr, "    -d  density           # density (spheres/micron^3)  [default=1.000]\n");
 	fprintf(stderr, "    -i  imag_index        # imag index of refraction    [default=0.000]\n");
-	fprintf(stderr, "    -l  lambda_vac        # wavelength in vaccuum       [default=0.633]\n");
+	fprintf(stderr, "    -l  lambda_vac        # wavelength in vacuum        [default=0.633]\n");
+	fprintf(stderr, "    -L  last_lambda       # last wavelength in vacuum   [default=0.633]\n");
 	fprintf(stderr, "    -m  index_of_medium   # refractive index of medium  [default=1.000]\n");
 	fprintf(stderr, "    -n  real_index        # real index of refraction    [default=1.550]\n");
-	fprintf(stderr, "    -p  num_of_angles     # number of angles            [default=0.000]\n");
+	fprintf(stderr, "    -p  num_of_angles     # number of angles            [default=0    ]\n");
+	fprintf(stderr, "    -P  num_of_lambda     # number of wavelengths        [default=0    ]\n");
 	fprintf(stderr, "    -r  radius            # sphere radius [microns]     [default=0.525]\n\n");
 	fprintf(stderr, "    -h                    # display help\n");
 	fprintf(stderr, "    -v                    # version information\n\n");
@@ -355,6 +371,6 @@ static void print_usage(void)
 	fprintf(stderr, "    mie -p 40         # Bohren & Huffman Appendix A\n");
 	fprintf(stderr, "    mie -d 1 -i 0 -l 0.6328 -m 1 -n 1.55 -p 40 -r 0.525\n\n");
 
-	fprintf(stderr, "Report bugs to <prahl@@bme.ogi.edu> (http://omlc.ogi.edu)\n\n");
+	fprintf(stderr, "Report bugs to http://omlc.ogi.edu/people/prahl\n\n");
 	exit(0);
 }

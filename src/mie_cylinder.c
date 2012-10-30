@@ -1,5 +1,3 @@
-/*2:*/
-#line 8 "mie_cylinder.w"
 
 #include <math.h> 
 #include <stdlib.h> 
@@ -10,16 +8,10 @@
 #include "mie_cylinder.h"
 #define  PI 3.14159265358979
 
-/*5:*/
-#line 38 "mie_cylinder.w"
 
-/*4:*/
-#line 35 "mie_cylinder.w"
 
 static double bessj0(double x)
 
-/*:4*/
-#line 39 "mie_cylinder.w"
 
 {
 double ax,z;
@@ -46,19 +38,11 @@ ans= sqrt(0.636619772/ax)*(cos(xx)*ans1-z*sin(xx)*ans2);
 return ans;
 }
 
-/*:5*/
-#line 18 "mie_cylinder.w"
 
-/*9:*/
-#line 102 "mie_cylinder.w"
 
-/*8:*/
-#line 99 "mie_cylinder.w"
 
 static double bessj1(double x)
 
-/*:8*/
-#line 103 "mie_cylinder.w"
 
 
 {
@@ -87,19 +71,11 @@ if(x<0.0)ans= -ans;
 return ans;
 }
 
-/*:9*/
-#line 19 "mie_cylinder.w"
 
-/*7:*/
-#line 70 "mie_cylinder.w"
 
-/*6:*/
-#line 67 "mie_cylinder.w"
 
 static double bessy0(double x)
 
-/*:6*/
-#line 71 "mie_cylinder.w"
 
 {
 double z;
@@ -126,19 +102,11 @@ ans= sqrt(0.636619772/x)*(sin(xx)*ans1+z*cos(xx)*ans2);
 return ans;
 }
 
-/*:7*/
-#line 20 "mie_cylinder.w"
 
-/*11:*/
-#line 136 "mie_cylinder.w"
 
-/*10:*/
-#line 133 "mie_cylinder.w"
 
 static double bessy1(double x)
 
-/*:10*/
-#line 137 "mie_cylinder.w"
 
 {
 double z;
@@ -167,20 +135,12 @@ ans= sqrt(0.636619772/x)*(sin(xx)*ans1+z*cos(xx)*ans2);
 return ans;
 }
 
-/*:11*/
-#line 21 "mie_cylinder.w"
 
 
-/*13:*/
-#line 171 "mie_cylinder.w"
 
-/*12:*/
-#line 168 "mie_cylinder.w"
 
 static void jn_real(double x,int n,double*BesselJn,double*BesselYn)
 
-/*:12*/
-#line 172 "mie_cylinder.w"
 
 {
 const double iacc= 40;
@@ -234,19 +194,11 @@ for(j= 2;j<=n;j++)
 BesselJn[j]/= sum;
 }
 
-/*:13*/
-#line 23 "mie_cylinder.w"
 
-/*15:*/
-#line 230 "mie_cylinder.w"
 
-/*14:*/
-#line 227 "mie_cylinder.w"
 
 static void jn_complex(struct c_complex z,int n,struct c_complex*Jn)
 
-/*:14*/
-#line 231 "mie_cylinder.w"
 
 {
 struct c_complex a,*JnTmp;
@@ -273,14 +225,8 @@ Jn[i]= c_div(JnTmp[i],a);
 free_carray(JnTmp);
 }
 
-/*:15*/
-#line 24 "mie_cylinder.w"
 
-/*17:*/
-#line 276 "mie_cylinder.w"
 
-/*16:*/
-#line 269 "mie_cylinder.w"
 
 void MieCylinderCoefficients(double x,struct c_complex m,double zeta,int n_terms,
 struct c_complex an1[],
@@ -288,8 +234,6 @@ struct c_complex bn1[],
 struct c_complex an2[],
 struct c_complex bn2[])
 
-/*:16*/
-#line 277 "mie_cylinder.w"
 
 {
 struct c_complex*jn1,ci,eta,feta,m2xi;
@@ -338,22 +282,14 @@ free_darray(BesselJn);
 free_darray(BesselYn);
 }
 
-/*:17*/
-#line 25 "mie_cylinder.w"
 
-/*19:*/
-#line 352 "mie_cylinder.w"
 
-/*18:*/
-#line 346 "mie_cylinder.w"
 
 void MieCylinder(double x,struct c_complex m,double zeta,const double*theta,int nangles,
 struct c_complex*t1,struct c_complex*t2,struct c_complex*t3,
 struct c_complex*qexpar,struct c_complex*qexper,
 double*qscpar,double*qscper)
 
-/*:18*/
-#line 353 "mie_cylinder.w"
 
 
 {
@@ -414,8 +350,6 @@ free_carray(an2);
 free_carray(bn1);
 free_carray(bn2);
 }
-/*:19*/
-#line 26 "mie_cylinder.w"
 
 
-/*:2*/
+

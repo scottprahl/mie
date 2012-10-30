@@ -1,9 +1,9 @@
 #
-#  Makefile by Scott Prahl May 2006
+#  Makefile by Scott Prahl Jan 2012
 #
-VERSION = 2-3-2d
+VERSION = 2-3-4
 
-CFLAGS = -Wall -ansi -dynamic -fno-common
+CFLAGS = -Wall -ansi -dynamic -fno-common -g
 
 LIB_EXT = .dylib		#MacOS X shared lib
 #LIB_EXT = .so			#linux shared lib
@@ -113,6 +113,7 @@ tidy:
 
 dist: 
 	make
+	make test
 	make doc
 	make lib
 	make mma
@@ -131,10 +132,32 @@ dist:
 	zip -r mie-$(VERSION) mie-$(VERSION)
 	rm -rf mie-$(VERSION)
 	
+zip: 
+	make test
+	make tidy
+	make doc
+	make src
+	mkdir -p	       xp-mie-$(VERSION)
+	mkdir -p	       xp-mie-$(VERSION)/doc
+	mkdir -p	       xp-mie-$(VERSION)/src
+	ln $(MAIN)         xp-mie-$(VERSION)
+	ln $(DOCS)         xp-mie-$(VERSION)/doc
+	ln $(WSRC)         xp-mie-$(VERSION)/src
+	ln $(HSRC)         xp-mie-$(VERSION)/src
+	ln $(CSRC)         xp-mie-$(VERSION)/src
+	ln $(OSRC)         xp-mie-$(VERSION)/src
+	ln mie.exe	       xp-mie-$(VERSION)
+	`perl -pi.bak -e 's/\n/\015\012/' xp-mie-$(VERSION)/src/*.c`
+	`perl -pi.bak -e 's/\n/\015\012/' xp-mie-$(VERSION)/src/*.h`
+	rm xp-mie-$(VERSION)/src/*.bak 
+	zip -r xp-mie-$(VERSION) xp-mie-$(VERSION)
+	rm -rf xp-mie-$(VERSION)
+
 clean:
 	cd mma  ; make clean
 	cd src  ; make clean
 	rm -f mie libmie$(LIB_EXT) libmie.h
+	rm -f miecyl
 	rm -f mpgraph.mp mprun.mp texexec.tmp texexec.tui
 	rm -f test_mie test_mie_lobatto test_latex
 	rm -f mie_doc.aux     mie_doc.idx     mie_doc.scn     mie_doc.toc
@@ -144,6 +167,7 @@ clean:
 realclean:
 	make clean
 	cd mma  ; make realclean
+	cd src  ; make realclean
 	rm -f *.tex *.dvi *.log *.aux *.sref *.o
 	rm -f *.idx *.scn *.ref *.toc 
 	rm -f *.pdf mie test_mie
@@ -169,6 +193,9 @@ help::
 	echo "test        -- run iad program on a bunch of test files";\
 	echo "tidy        -- generate .c and .h files"
 
-.PHONY: clean dist doc docs lib mma test install install-all test mie_doc
+src/version.c :
+	cd src ; ./version.pl
+	
+.PHONY: clean tidy dist doc docs lib mma test install install-all mie_doc
 
 .SECONDARY : $(CSRC) $(HSRC)

@@ -455,6 +455,7 @@ void small_conducting_Mie(double x, struct c_complex m, double * mu,
 
   if ((s1==NULL) || (s2==NULL)) nangles=0;
 
+  m.re += 0.0;  /* suppress warning */
   x2 = x * x;
   x3 = x2 * x;
   x4 = x2 * x2;
@@ -778,7 +779,7 @@ $$
 
  @<Increment cross sections @>=
    factor     = 2.0 * n +1.0;
-*g+=(n-1.0/n)*(anm1.re*an.re+anm1.im*an.im+bnm1.re*bn.re+bnm1.im*bn.im);
+   *g+=(n-1.0/n)*(anm1.re*an.re+anm1.im*an.im+bnm1.re*bn.re+bnm1.im*bn.im);
    *g         += factor/n/(n+1.0)* (an.re * bn.re + an.im * bn.im);
    *qsca      += factor * (c_norm(an) + c_norm(bn));
    *qext      += factor * (an.re + bn.re);
@@ -821,11 +822,12 @@ Furthermore,
 
 @ @<Free allocated memory@>=
   if (m.re>0) free_carray(D);
-if (nangles > 0) {
-  free_darray(pi0);
-  free_darray(pi1);
-  free_darray(tau);
-}
+  
+  if (nangles > 0) {
+    free_darray(pi0);
+    free_darray(pi1);
+    free_darray(tau);
+  }
 
 @*1 Easy Mie.
 

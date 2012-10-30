@@ -31,7 +31,8 @@ install:
 	cp Mie.m $(INSTALL_DIR)
 	cp Mie   $(INSTALL_DIR)/External
 
+realclean:
 clean:
 	rm -f Mietm.o Mietm.c Mie
 
-.PHONY : clean
+.PHONY : clean realclean

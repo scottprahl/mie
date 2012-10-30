@@ -1,11 +1,11 @@
 #
-#  Makefile by Scott Prahl May 2006
+#  Makefile by Scott Prahl Jan 2012
 #
 
 # flags for debugging
 #CFLAGS = -Wall -ansi -fno-common -pedantic -W -Wconversion -Wshadow -g
 # typical flags
-CFLAGS = -fno-common -O3
+CFLAGS = -fno-common -O3 
 
 LOCAL_LIBRARIES = -lm
 
@@ -37,11 +37,11 @@ all : mie miecyl
 
 test: test_mie test_mie_lobatto test_latex
 
-mie: version $(OBJ)  mie_main.o	
+mie: version $(OBJ) mie_main.o	
 	$(CC) -o mie $(OBJ) mie_main.o $(LOCAL_LIBRARIES)
 
-miecyl : mie_cylinder_main.o mie_cylinder.o mie_complex.o mie_array.o
-	$(CC) -o miecyl mie_cylinder_main.o mie_cylinder.o mie_complex.o mie_array.o
+miecyl : version mie_cylinder_main.o mie_cylinder.o mie_complex.o mie_array.o
+	$(CC) -o miecyl mie_cylinder_main.o mie_cylinder.o mie_complex.o mie_array.o $(LOCAL_LIBRARIES)
 	
 libmie.h: mie.w
 	ctangle -bph mie
@@ -49,16 +49,16 @@ libmie.h: mie.w
 	indent libmie.h 
 	rm -f libmie.h.bak libmie.h.BAK
 	
-libmie.a: $(OBJ) libmie.h
+libmie.a: version $(OBJ) libmie.h
 	ar rs libmie.a $(OBJ)
 
-libmie.so: $(OBJ) libmie.h
+libmie.so: version $(OBJ) libmie.h
 	cc $(SHARED_LIB_OPT) -o libmie.so $(OBJ)
 
-libmie.dylib: $(OBJ) libmie.h
+libmie.dylib: version $(OBJ) libmie.h
 	cc $(DYNAMIC_LIB_OPT) -o libmie.dylib $(OBJ)
 
-test_mie: version $(OBJ) test_mie.o test_mie.c
+test_mie: version $(OBJ) test_mie.o
 	$(CC) -o test_mie $(OBJ) test_mie.o $(LOCAL_LIBRARIES)
 
 test_mie_lobatto: version $(OBJ) test_mie_lobatto.o
@@ -84,15 +84,17 @@ clean:
 	rm -f $(OBJ) test_latex.o test_mie_lobatto.o mie_main.o test_mie.o
 	rm -f test_latex test_mie_lobatto test_mie mie
 	rm -f mie_cylinder.o mie_cylinder_main.o miecyl
+	rm -f version.c
 	
 realclean:
 	make clean
 	rm -f *.tex *.dvi *.log *.aux *.sref *.o
-	rm -f *.idx *.scn *.ref *.toc 
-	rm -f *.dylib
+	rm -f *.idx *.scn *.ref *.toc *.dylib
+	rm -f libmie.a
 	rm -f $(CSRC) $(HSRC)
+	rm -f mie_doc.c version.c
 	
-doc docs: $(WSRC)
+doc : version $(WSRC)
 	cweave mie_doc
 	pdftex mie_doc
 	mv mie_doc.pdf ../doc/mie_src.pdf
@@ -124,9 +126,10 @@ test_mie_lobatto.c : mie_lobatto.w
 test_mie.c : test_mie.w
 	ctangle -bph test_mie
 	
-version :
+version:
 	./version.pl
+	$(CC) $(CFLAGS)   -c -o version.o version.c
 	
-.PHONY : clean dist doc docs lib mma test install install-all test mie_doc
+.PHONY : clean realclean tidy version doc test
 
 .SECONDARY : $(CSRC) $(HSRC)

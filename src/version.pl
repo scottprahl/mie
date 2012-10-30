@@ -15,13 +15,13 @@ my $makefile = '../Makefile';
 my $header   = 'version.c';
 my $tex      = 'version.tex';
 
-my $version  = '0.0.0';
+my $version  = '0-0-0';
 
 open IN, $makefile or die "could not open <$makefile>";
 while (<IN>){
 	last if m/VERSION\s*=/;
 }
-if (/=\s*([0-9.d]+)/) {$version=$1};
+if (/=\s*([-0-9d]+)/) {$version=$1};
 close IN;
 
 $time='';
