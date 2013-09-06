@@ -86,7 +86,7 @@ install-mma: mma/Mie.m mma/Mie.exe
 	mkdir -p $(MMA_INSTALL)
 	mkdir -p $(MMA_INSTALL)/External
 	cp mma/Mie.m $(MMA_INSTALL)
-	cp mma/Mie.exe $(MMA_INSTALL)/External
+	cp mma/Mie $(MMA_INSTALL)/External
 	
 install-all: mie libmie$(LIB_EXT) libmie.h mma/Mie.m mma/Mie.exe
 	make install

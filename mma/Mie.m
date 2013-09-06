@@ -201,7 +201,6 @@ MieMatrix[x_, n_, theta_, phi_] := myRotationMatrix[-phi Sign[Pi/2 - theta]] .
                                     MieMatrix[x, n, theta] . 
                                     myRotationMatrix[phi]
 
-
 StokesVectorH = {1, 1, 0, 0}
 
 StokesVectorV = {1, -1, 0, 0}

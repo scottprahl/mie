@@ -26,6 +26,7 @@
 *.scn
 *.toc
 *.lot
+*.aux
 
 # OS generated files #
 ######################
@@ -35,9 +36,11 @@
 .Spotlight-V100
 .Trashes
 Icon?
+ehthumbs.db
+Thumbs.db
 
 # specific files for this project
-#
+######################
 mie
 miecyl
 mma/Mie
@@ -51,5 +54,3 @@ src/test_mie
 src/test_mie_lobatto
 src/version.tex
 
-ehthumbs.db
-Thumbs.db
