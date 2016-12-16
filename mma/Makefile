@@ -11,7 +11,7 @@ MLINKDIR     = /Applications/Mathematica.app/SystemFiles/Links/MathLink/Develope
 CADDSDIR     = ${MLINKDIR}/CompilerAdditions
 INC_DIR      = ${CADDSDIR}
 LIB_DIR      = ${CADDSDIR}
-EXTRA_LIBS   = -lstdc++ -framework Foundation -lmie
+EXTRA_LIBS   = -stdlib=libstdc++ -lstdc++ -framework Foundation -lmie
 MPREP        = ${CADDSDIR}/mprep
 
 all : Mie

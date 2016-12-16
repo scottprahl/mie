@@ -10,7 +10,7 @@
 
 (* :Context:Optics`Mie`*)
 
-(* :Package Version:1.7*)
+(* :Package Version:1.8*)
 
 (* :Copyright:Copyright 2012, Scott Prahl*)
 
@@ -27,6 +27,10 @@ MieMus::usage = "MieMus[f,d,n,lambda] and MieMus[f,d,n,m,lambda] calculate the s
 MieMusp::usage = "MieMusp[f,d,n,lambda] and MieMusp[f,d,n,m,lambda] calculate the reduced scattering coefficient (per mm) for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with refractive index m, at the wavelength lambda (in nanometers in vacuum) for a volume fraction f (f=0.41 means 41% spheres by volume)."
 
 MieG::usage = "MieG[d,n,lambda] and MieG[d,n,m,lambda] calculate the scattering anisotropy for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
+
+MieMua::usage = "MieMua[f,d,n,lambda] and MieMua[f,d,n,m,lambda] calculate the absorption coefficient (per mm) for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with refractive index m, at the wavelength lambda (in nanometers in vacuum) for a volume fraction f (f=0.41 means 41% spheres by volume)."
+
+MieQabs::usage = "MieQabs[d,n,lambda] and MieQabs[d,n,m,lambda] calculate the absorption efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
 
 MieQsca::usage = "MieQsca[d,n,lambda] and MieQsca[d,n,m,lambda] calculate the scattering efficiency for a sphere with diameter d (in nanometers), index of refraction n=n-ik, in a medium with real index m, at the wavelength lambda (in nanometers in vacuum)."
 
@@ -91,6 +95,12 @@ MieQsca[diameter_, nSphere_, lambdaVacuum_] :=
 MieQsca[diameter_, nSphere_, nMedium_, lambdaVacuum_] :=
     MieQsca[diameter, nSphere/nMedium, lambdaVacuum/nMedium]
 
+MieQabs[diameter_, nSphere_, lambdaVacuum_] := 
+    Mie[Pi diameter/lambdaVacuum, nSphere][[3]]-Mie[Pi diameter/lambdaVacuum, nSphere][[1]]
+
+MieQabs[diameter_, nSphere_, nMedium_, lambdaVacuum_]  := 
+    MieQabs[diameter, nSphere/nMedium, lambdaVacuum/nMedium]
+
 MieG[diameter_, nSphere_, lambdaVacuum_] := 
     Mie[Pi diameter/lambdaVacuum, nSphere][[2]]
 
@@ -120,6 +130,13 @@ MieQback[diameter_, nSphere_, nMedium_, lambdaVacuum_] :=
 
 (* Properties that apply to bulk *)
   
+MieMua[VolumeFraction_, diameter_, nSphere_, lambdaVacuum_] := If[VolumeFraction>1,
+	Message[Mie::badVolumeFraction],
+    (1500000 VolumeFraction/diameter) (MieQabs[diameter,nSphere,lambdaVacuum]]
+
+MieMua[VolumeFraction_, diameter_, nSphere_, nMedium_, lambdaVacuum_] :=
+    MieMua[VolumeFraction, diameter, nSphere/nMedium, lambdaVacuum/nMedium]
+
 MieMus[VolumeFraction_, diameter_, nSphere_, lambdaVacuum_] := If[VolumeFraction>1,
 	Message[Mie::badVolumeFraction],
     (1500000 VolumeFraction/diameter) MieQsca[diameter,nSphere,lambdaVacuum]]
@@ -228,5 +245,7 @@ PolarizerMatrixL = 0.5 {{1, 0, 0, -1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 0, 0, -1}
 myRotationMatrix[angle_] := {{1,0,0,0},{0,Cos[2 angle],Sin[2 angle],0},{0,-Sin[2 angle],Cos[2 angle],0},{0,0,0,1}}
 
 End [ ]
+
+Print["Optics`Mie` version 0.9 is now loaded."];
 
 EndPackage[ ]
