@@ -235,8 +235,8 @@ m.im = 0.00;
 
 @<Print header@>=
   printf("# Mie Scattering                # Version %s\n", Version);
-  printf("# Oregon Medical Laser Center   # http://omlc.ogi.edu\n");
-  printf("# by Scott Prahl                # prahls@@ohsu.edu\n");
+  printf("# Oregon Medical Laser Center   # http://omlc.org\n");
+  printf("# by Scott Prahl                # scott.prahl@@oit.edu\n");
   printf("#\n");
 
 @ @<Print summary@>=
@@ -371,6 +371,6 @@ static void print_usage(void)
 	fprintf(stderr, "    mie -p 40         # Bohren & Huffman Appendix A\n");
 	fprintf(stderr, "    mie -d 1 -i 0 -l 0.6328 -m 1 -n 1.55 -p 40 -r 0.525\n\n");
 
-	fprintf(stderr, "Report bugs to http://omlc.ogi.edu/people/prahl\n\n");
+	fprintf(stderr, "Report bugs to http://omlc.org/people/prahl\n\n");
 	exit(0);
 }

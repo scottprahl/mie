@@ -132,7 +132,7 @@ MieQback[diameter_, nSphere_, nMedium_, lambdaVacuum_] :=
   
 MieMua[VolumeFraction_, diameter_, nSphere_, lambdaVacuum_] := If[VolumeFraction>1,
 	Message[Mie::badVolumeFraction],
-    (1500000 VolumeFraction/diameter) (MieQabs[diameter,nSphere,lambdaVacuum]]
+    (1500000 VolumeFraction/diameter) MieQabs[diameter,nSphere,lambdaVacuum]]
 
 MieMua[VolumeFraction_, diameter_, nSphere_, nMedium_, lambdaVacuum_] :=
     MieMua[VolumeFraction, diameter, nSphere/nMedium, lambdaVacuum/nMedium]

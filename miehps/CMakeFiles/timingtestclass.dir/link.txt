@@ -1,0 +1,1 @@
+g++   -I/usr/local/include -I/opt/local/include -L/opt/local/lib -O3 -DNDEBUG -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/timingtestclass.dir/miehpstimingtestclass.cpp.o CMakeFiles/timingtestclass.dir/miehps.cpp.o  -o timingtestclass  -L/Users/prahl/Desktop/miehps-1.0.1 -Wl,-rpath,/Users/prahl/Desktop/miehps-1.0.1  -lgmp -lgmpxx 
