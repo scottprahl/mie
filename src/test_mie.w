@@ -238,7 +238,7 @@ anisotropy calculation.
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%4.1f   %7.3f %7.3f   %7.3f %7.3f\n",x,qsca,0.028,qsca*g,-0.011);
 	ez_Mie(x,0.0, &qsca, &g);
-	printf("%4.1f   %7.3f %7.3f   %7.3f %7.3f\n",x,qsca,0.028,qsca*g,-0.011);
+	printf("%4.1f   %7.3f %7.3f   %7.3f %7.3f [ez Mie]\n",x,qsca,0.028,qsca*g,-0.011);
 	
 	x=1.0;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
@@ -320,7 +320,7 @@ allows complete code coverage.
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f\n",x,qsca,0.000007,g,0.001448);
 	ez_Mie(x,0.75, &qsca, &g);
-	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f\n",x,qsca,0.000007,g,0.001448);
+	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f [ez Mie]\n",x,qsca,0.000007,g,0.001448);
 	
 	m=c_set(0.75, 0.0);
 	x=0.101;
@@ -337,7 +337,7 @@ allows complete code coverage.
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f\n",x,qsca,1.997908,g,0.844944);
 	ez_Mie(x,0.75, &qsca, &g);
-	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f\n",x,qsca,1.997908,g,0.844944);
+	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f [ez Mie]\n",x,qsca,1.997908,g,0.844944);
 
 @ @<Wiscombe Absorbing water spheres@>=
 	printf("\nAbsorbing Water Spheres m=(1.33-0.00001i)\n");
@@ -417,7 +417,7 @@ allows complete code coverage.
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
 	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f\n",x,qsca,2.008102,g,0.500926);
 	ez_Mie(x,0.0, &qsca, &g);
-	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f\n",x,qsca,2.008102,g,0.500926);
+	printf("%9.3f   %11.7f %11.7f   %11.7f %11.7f [ez Mie]\n",x,qsca,2.008102,g,0.500926);
 	
 	x=10000;
 	Mie (x, m, mu, nangles, s1, s2, &qext, &qsca, &qback, &g);
