@@ -1,5 +1,5 @@
 /*22:*/
-#line 269 "./mie_lobatto.w"
+#line 269 "mie_lobatto.w"
 
 
 #include <stddef.h> 

@@ -1,5 +1,5 @@
 /*2:*/
-#line 9 "./mie_array.w"
+#line 9 "mie_array.w"
 
 #include <stdlib.h> 
 #include <string.h> 
@@ -8,15 +8,15 @@
 #include "mie_array.h"
 
 /*6:*/
-#line 42 "./mie_array.w"
+#line 42 "mie_array.w"
 
 /*5:*/
-#line 39 "./mie_array.w"
+#line 39 "mie_array.w"
 
 static void array_error(char*s)
 
 /*:5*/
-#line 43 "./mie_array.w"
+#line 43 "mie_array.w"
 
 {
 printf("Array -- %s\n",s);
@@ -24,18 +24,18 @@ exit(1);
 }
 
 /*:6*/
-#line 16 "./mie_array.w"
+#line 16 "mie_array.w"
 
 /*8:*/
-#line 54 "./mie_array.w"
+#line 54 "mie_array.w"
 
 /*7:*/
-#line 51 "./mie_array.w"
+#line 51 "mie_array.w"
 
 double*new_darray(long size)
 
 /*:7*/
-#line 55 "./mie_array.w"
+#line 55 "mie_array.w"
 
 {
 double*a;
@@ -51,36 +51,36 @@ return a+1;
 }
 
 /*:8*/
-#line 17 "./mie_array.w"
+#line 17 "mie_array.w"
 
 /*10:*/
-#line 72 "./mie_array.w"
+#line 72 "mie_array.w"
 
 /*9:*/
-#line 69 "./mie_array.w"
+#line 69 "mie_array.w"
 
 void free_darray(double*a)
 
 /*:9*/
-#line 73 "./mie_array.w"
+#line 73 "mie_array.w"
 
 {
 if(a!=NULL)free(a-1);
 }
 
 /*:10*/
-#line 18 "./mie_array.w"
+#line 18 "mie_array.w"
 
 /*12:*/
-#line 84 "./mie_array.w"
+#line 84 "mie_array.w"
 
 /*11:*/
-#line 81 "./mie_array.w"
+#line 81 "mie_array.w"
 
 double*copy_darray(double*a,long size)
 
 /*:11*/
-#line 85 "./mie_array.w"
+#line 85 "mie_array.w"
 
 {
 double*b= NULL;
@@ -93,18 +93,18 @@ return b+1;
 }
 
 /*:12*/
-#line 19 "./mie_array.w"
+#line 19 "mie_array.w"
 
 /*14:*/
-#line 101 "./mie_array.w"
+#line 101 "mie_array.w"
 
 /*13:*/
-#line 98 "./mie_array.w"
+#line 98 "mie_array.w"
 
 void set_darray(double*a,long size,double x)
 
 /*:13*/
-#line 102 "./mie_array.w"
+#line 102 "mie_array.w"
 
 {
 long j;
@@ -116,18 +116,18 @@ a[j]= x;
 }
 
 /*:14*/
-#line 20 "./mie_array.w"
+#line 20 "mie_array.w"
 
 /*16:*/
-#line 117 "./mie_array.w"
+#line 117 "mie_array.w"
 
 /*15:*/
-#line 114 "./mie_array.w"
+#line 114 "mie_array.w"
 
 void min_max_darray(double*a,long size,double*min,double*max)
 
 /*:15*/
-#line 118 "./mie_array.w"
+#line 118 "mie_array.w"
 
 {
 long j;
@@ -146,18 +146,18 @@ if(a[j]<*min)*min= a[j];
 }
 
 /*:16*/
-#line 21 "./mie_array.w"
+#line 21 "mie_array.w"
 
 /*19:*/
-#line 145 "./mie_array.w"
+#line 145 "mie_array.w"
 
 /*18:*/
-#line 142 "./mie_array.w"
+#line 142 "mie_array.w"
 
 void sort_darray(double*a,long size)
 
 /*:18*/
-#line 146 "./mie_array.w"
+#line 146 "mie_array.w"
 
 {
 long i,ir,j,l;
@@ -194,18 +194,18 @@ a[i-1]= aa;
 }
 
 /*:19*/
-#line 22 "./mie_array.w"
+#line 22 "mie_array.w"
 
 /*22:*/
-#line 189 "./mie_array.w"
+#line 189 "mie_array.w"
 
 /*21:*/
-#line 186 "./mie_array.w"
+#line 186 "mie_array.w"
 
 void print_darray(double*a,long size,long ilow,long ihigh)
 
 /*:21*/
-#line 190 "./mie_array.w"
+#line 190 "mie_array.w"
 
 {
 long j;
@@ -221,7 +221,7 @@ printf("x[%ld]= %-10.5g \n",j,a[j]);
 }
 
 /*:22*/
-#line 23 "./mie_array.w"
+#line 23 "mie_array.w"
 
 
 /*:2*/

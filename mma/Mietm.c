@@ -1,10 +1,10 @@
 /*
- * This file automatically produced by /Applications/Mathematica.app/SystemFiles/Links/MathLink/DeveloperKit/CompilerAdditions/mprep from:
+ * This file automatically produced by /Applications/Mathematica.app/Contents/SystemFiles/Links/MathLink/DeveloperKit/MacOSX-x86-64/CompilerAdditions/mprep from:
  *	Mie.tm
- * mprep Revision 16 Copyright (c) Wolfram Research, Inc. 1990-2009
+ * mprep Revision 18 Copyright (c) Wolfram Research, Inc. 1990-2013
  */
 
-#define MPREP_REVISION 16
+#define MPREP_REVISION 18
 
 #if CARBON_MPREP
 #include <Carbon/Carbon.h>
@@ -414,7 +414,7 @@ static int _tr0(mlp) MLINK mlp;
 	MieMma(_tp1, _tp2, _tp3, _tp4, _tpl4);
 
 	res = 1;
-L4:	MLDisownRealList( mlp, _tp4, _tpl4);
+L4:	MLReleaseReal64List(mlp, _tp4, _tpl4);
 L3: L2: L1: 
 L0:	return res;
 } /* _tr0 */
@@ -566,7 +566,11 @@ static int  _definepattern( MLINK mlp, char* patt, char* args, int func_n)
 
 int _MLDoCallPacket( MLINK mlp, struct func functable[], int nfuncs)
 {
+#if MLINTERFACE >= 4
+	int len;
+#else
 	long len;
+#endif
 	int n, res = 0;
 	struct func* funcp;
 
@@ -574,7 +578,11 @@ int _MLDoCallPacket( MLINK mlp, struct func functable[], int nfuncs)
 	funcp = &functable[n];
 
 	if( funcp->f_nargs >= 0
+#if MLINTERFACE >= 4
+	&& ( ! MLTestHead(mlp, "List", &len)
+#else
 	&& ( ! MLCheckFunction(mlp, "List", &len)
+#endif
 	     || ( !funcp->manual && (len != funcp->f_nargs))
 	     || (  funcp->manual && (len <  funcp->f_nargs))
 	   )
@@ -592,11 +600,24 @@ L0:	if( res == 0)
 mlapi_packet MLAnswer( MLINK mlp)
 {
 	mlapi_packet pkt = 0;
+#if MLINTERFACE >= 4
+	int waitResult;
 
+	while( ! MLDone && ! MLError(mlp)
+		&& (waitResult = MLWaitForLinkActivity(mlp),waitResult) &&
+		waitResult == MLWAITSUCCESS && (pkt = MLNextPacket(mlp), pkt) &&
+		pkt == CALLPKT)
+	{
+		MLAbort = 0;
+		if(! MLDoCallPacket(mlp))
+			pkt = 0;
+	}
+#else
 	while( !MLDone && !MLError(mlp) && (pkt = MLNextPacket(mlp), pkt) && pkt == CALLPKT){
 		MLAbort = 0;
 		if( !MLDoCallPacket(mlp)) pkt = 0;
 	}
+#endif
 	MLAbort = 0;
 	return pkt;
 } /* MLAnswer */
@@ -699,8 +720,14 @@ static int _MLMain( charpp_ct argv, charpp_ct argv_end, charp_ct commandline)
 	if( !init_macintosh()) goto R0;
 #endif /* (DARWIN_MATHLINK && CARBON_MPREP) */
 
+#if MLINTERFACE >= 4
+	if( !stdenv)
+		stdenv = MLInitialize( (MLEnvironmentParameter)0);
+#else
 	if( !stdenv)
 		stdenv = MLInitialize( (MLParametersPointer)0);
+#endif
+
 	if( stdenv == (MLEnvironment)0) goto R0;
 
 #if (DARWIN_MATHLINK && CARBON_MPREP)

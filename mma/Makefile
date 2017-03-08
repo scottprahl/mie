@@ -7,8 +7,8 @@ VERSION      = 8.0
 SYS          = MacOSX
 
 INSTALL_DIR  = /Users/prahl/Library/Mathematica/Applications/Optics
-MLINKDIR     = /Applications/Mathematica.app/SystemFiles/Links/MathLink/DeveloperKit
-CADDSDIR     = ${MLINKDIR}/CompilerAdditions
+MLINKDIR     = /Applications/Mathematica.app/Contents/SystemFiles/Links/MathLink/DeveloperKit
+CADDSDIR     = ${MLINKDIR}/MacOSX-x86-64/CompilerAdditions
 INC_DIR      = ${CADDSDIR}
 LIB_DIR      = ${CADDSDIR}
 EXTRA_LIBS   = -stdlib=libstdc++ -lstdc++ -framework Foundation -lmie
@@ -23,7 +23,7 @@ Mietm.c : Mie.tm
 	${MPREP} $? -o $@
 
 Mie : Mietm.o
-	${CXX} -I${INC_DIR} Mietm.o -L${LIB_DIR} -lMLi3 ${EXTRA_LIBS} -o $@
+	${CXX} -I${INC_DIR} Mietm.o -L${LIB_DIR} -lMLi4 ${EXTRA_LIBS} -o $@
 
 install:
 	mkdir -p $(INSTALL_DIR)

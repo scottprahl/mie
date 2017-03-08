@@ -1,18 +1,18 @@
 /*1:*/
-#line 16 "./mie_legendre.w"
+#line 16 "mie_legendre.w"
 
 #include"mie_legendre.h"
 
 /*4:*/
-#line 56 "./mie_legendre.w"
+#line 56 "mie_legendre.w"
 
 /*3:*/
-#line 53 "./mie_legendre.w"
+#line 53 "mie_legendre.w"
 
 double LegendrePn(long n,double x)
 
 /*:3*/
-#line 57 "./mie_legendre.w"
+#line 57 "mie_legendre.w"
 
 {
 double pk,pkp1,pkm1;
@@ -36,18 +36,18 @@ return pk;
 }
 
 /*:4*/
-#line 19 "./mie_legendre.w"
+#line 19 "mie_legendre.w"
 
 /*6:*/
-#line 84 "./mie_legendre.w"
+#line 84 "mie_legendre.w"
 
 /*5:*/
-#line 81 "./mie_legendre.w"
+#line 81 "mie_legendre.w"
 
 void LegendrePn_and_Pnm1(long n,double x,double*Pnm1Val,double*PnVal)
 
 /*:5*/
-#line 85 "./mie_legendre.w"
+#line 85 "mie_legendre.w"
 
 {
 long k;
@@ -72,18 +72,18 @@ Pk= Pkp1;
 }
 
 /*:6*/
-#line 20 "./mie_legendre.w"
+#line 20 "mie_legendre.w"
 
 /*8:*/
-#line 124 "./mie_legendre.w"
+#line 124 "mie_legendre.w"
 
 /*7:*/
-#line 121 "./mie_legendre.w"
+#line 121 "mie_legendre.w"
 
 double LegendrePnd(long n,double x)
 
 /*:7*/
-#line 125 "./mie_legendre.w"
+#line 125 "mie_legendre.w"
 
 {
 double p,pminus,pplus;
@@ -108,18 +108,18 @@ return p;
 
 
 /*:8*/
-#line 21 "./mie_legendre.w"
+#line 21 "mie_legendre.w"
 
 /*10:*/
-#line 164 "./mie_legendre.w"
+#line 164 "mie_legendre.w"
 
 /*9:*/
-#line 161 "./mie_legendre.w"
+#line 161 "mie_legendre.w"
 
 double LegendrePndd(long n,double x)
 
 /*:9*/
-#line 165 "./mie_legendre.w"
+#line 165 "mie_legendre.w"
 
 {
 double p,pminus,pplus;
@@ -142,7 +142,7 @@ p= pplus;
 return p;
 
 }/*:10*/
-#line 22 "./mie_legendre.w"
+#line 22 "mie_legendre.w"
 
 
 /*:1*/

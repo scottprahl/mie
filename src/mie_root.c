@@ -1,5 +1,5 @@
 /*2:*/
-#line 9 "./mie_root.w"
+#line 9 "mie_root.w"
 
 #include <math.h> 
 #include <stdio.h> 
@@ -7,16 +7,16 @@
 #include "mie_root.h"
 
 /*5:*/
-#line 28 "./mie_root.w"
+#line 28 "mie_root.w"
 
 /*4:*/
-#line 24 "./mie_root.w"
+#line 24 "mie_root.w"
 
 void bracketroot(double(*fx)(double),double x1,double x2,long n,
 double xb1[],double xb2[],long*nrequested)
 
 /*:4*/
-#line 29 "./mie_root.w"
+#line 29 "mie_root.w"
 
 
 {
@@ -44,18 +44,18 @@ fp= fc;
 }
 
 /*:5*/
-#line 15 "./mie_root.w"
+#line 15 "mie_root.w"
 
 /*8:*/
-#line 60 "./mie_root.w"
+#line 60 "mie_root.w"
 
 /*7:*/
-#line 57 "./mie_root.w"
+#line 57 "mie_root.w"
 
 double saferoot(void(*funcd)(double,double*,double*),double x1,double x2,double xacc)
 
 /*:7*/
-#line 61 "./mie_root.w"
+#line 61 "mie_root.w"
 
 
 {
@@ -123,7 +123,7 @@ exit(1);
 return 0.0;
 }
 /*:8*/
-#line 16 "./mie_root.w"
+#line 16 "mie_root.w"
 
 
 /*:2*/
