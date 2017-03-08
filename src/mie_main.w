@@ -338,7 +338,7 @@ m.im = 0.00;
 static void print_version(void)
 {
 	fprintf(stderr, "mie %s\n\n",Version);
-	fprintf(stderr, "Copyright (C) 2012 Free Software Foundation, Inc.\n");
+	fprintf(stderr, "Copyright (C) 2017 Free Software Foundation, Inc.\n");
 	fprintf(stderr, "This is free software; see the source for copying conditions.  There is NO\n");
 	fprintf(stderr, "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
 	fprintf(stderr, "\n\nWritten by Scott Prahl\n");
@@ -371,6 +371,6 @@ static void print_usage(void)
 	fprintf(stderr, "    mie -p 40         # Bohren & Huffman Appendix A\n");
 	fprintf(stderr, "    mie -d 1 -i 0 -l 0.6328 -m 1 -n 1.55 -p 40 -r 0.525\n\n");
 
-	fprintf(stderr, "Report bugs to http://omlc.org/people/prahl\n\n");
+	fprintf(stderr, "Report bugs to scott.prahl@@oit.edu\n\n");
 	exit(0);
 }
