@@ -751,13 +751,13 @@ $$
     
 @ From page 120 of Bohren and Huffman the anisotropy is given by
 $$
-Q_{\rm sca}\langle \cos\theta\rangle = {4\over x^2} \left[
+Q_{\rm sca}\langle \cos\theta\rangle = Q_{\rm sca}\cdot g= {4\over x^2} \left[
 \sum_{n=1}^{\infty} {n(n+2)\over n+1} \Real\lbrace a_na_{n+1}^*+b_nb_{n+1}^*\rbrace
 + \sum_{n=1}^{\infty} {2n+1\over n(n+1)} \Real\lbrace a_nb_n^*\rbrace\right]
 $$
 For computation purposes, this must be rewritten as
 $$
-Q_{\rm sca}\langle \cos\theta\rangle = {4\over x^2} \left[
+Q_{\rm sca}\cdot g = {4\over x^2} \left[
 \sum_{n=2}^{\infty} {(n^2-1)\over n} \Real\lbrace a_{n-1}a_n^*+b_{n-1}b_n^*\rbrace
 + \sum_{n=1}^{\infty} {2n+1\over n(n+1)} \Real\lbrace a_nb_n^*\rbrace\right]
 $$
@@ -779,7 +779,7 @@ $$
 
  @<Increment cross sections @>=
    factor     = 2.0 * n +1.0;
-   *g+=(n-1.0/n)*(anm1.re*an.re+anm1.im*an.im+bnm1.re*bn.re+bnm1.im*bn.im);
+   *g         += (n*n-1.0)/n*(anm1.re*an.re+anm1.im*an.im+bnm1.re*bn.re+bnm1.im*bn.im);
    *g         += factor/n/(n+1.0)* (an.re * bn.re + an.im * bn.im);
    *qsca      += factor * (c_norm(an) + c_norm(bn));
    *qext      += factor * (an.re + bn.re);
