@@ -296,7 +296,7 @@ m.im = 0.00;
 		printf("#   columns is the second.  The next three columns are normalized\n");
 		printf("#   to the value at 0 degrees. \n");
 		printf("#\n");
-		printf("#       natural      = (|S1|^2+|S2|^2)/(pi X^2 Qsca)\n");
+		printf("#       natural      = (|S1|^2+|S2|^2)/2*1/(pi X^2 Qsca)\n");
 		printf("#       perpen       = |S1|^2/(pi X^2 Qsca)\n");
 		printf("#       parallel     = |S2|^2/(pi X^2 Qsca)\n");
 		printf("#       polarization = (|S1|^2-|S2|^2)/(|S1|^2+|S2|^2)\n");
