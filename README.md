@@ -1,12 +1,10 @@
 # Mie Scattering
 
-** v2.5.0 **
+v2.5.0
 
-** Scott Prahl **
+Scott Prahl
 
-** September 2017 **
-
-** Oregon Tech **
+September 2017
 
 ## OVERVIEW
 
