@@ -43,12 +43,17 @@ Thumbs.db
 ######################
 mie
 miecyl
+libmie.h
 mma/Mie
 src/first.pdf
 src/mie
 src/mie_doc.c
 src/mie_doc.tex
 src/miecyl
+src/mie_cylinder.c
+src/mie_cylinder.h
+src/mie_cylinder_main.c
+src/mie_main.c
 src/test_latex
 src/test_mie
 src/test_mie_lobatto
