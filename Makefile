@@ -1,13 +1,13 @@
 #
 #  Makefile by Scott Prahl Jan 2012
 #
-VERSION = 2-4-1
+VERSION = 2-5-0
 
 CFLAGS = -Wall -ansi -dynamic -fno-common -g
 
 LIB_EXT = .dylib		#MacOS X shared lib
 #LIB_EXT = .so			#linux shared lib
-LIB_EXT = .a			#static lib
+#LIB_EXT = .a			#static lib
 
 #Base directory - adapt as needed
 PREFIX=/usr/local
@@ -21,7 +21,7 @@ SHARED_LIB_OPT = -bundle -flat_namespace -undefined suppress
 DYNAMIC_LIB_OPT = -dynamiclib -install_name /usr/local/lib/libmie.dylib \
                   -compatibility_version 2.0 -current_version 2.0.0
 
-MAIN = Makefile README
+MAIN = Makefile README.md
 
 DOCS = 	doc/INSTALL doc/CHANGEFILE doc/mie_src.pdf
 
