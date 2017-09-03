@@ -20,7 +20,7 @@ I recently (2017) wrote a pure python version of the sphere scattering code [mie
 The code is 
 ## Download
 
-Visit [https://github.com/scottprahl/mie] and download a zip file or just use `git`
+Visit [https://github.com/scottprahl/mie](https://github.com/scottprahl/mie) and download a zip file or just use `git`
 
     git clone https://github.com/scottprahl/mie.git
     
