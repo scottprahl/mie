@@ -17,13 +17,13 @@ MPREP        = ${CADDSDIR}/mprep
 all : Mie
 
 .c.o :
-	${CC} -c -I${INC_DIR} $<
+	${CC} -c -I${INC_DIR}  -I/usr/local/include $<
 
 Mietm.c : Mie.tm
 	${MPREP} $? -o $@
 
 Mie : Mietm.o
-	${CXX} -I${INC_DIR} Mietm.o -L${LIB_DIR} -lMLi4 ${EXTRA_LIBS} -o $@
+	${CXX} -I${INC_DIR} -I/usr/local/include Mietm.o -L${LIB_DIR} -lMLi4 ${EXTRA_LIBS} -o $@
 
 install:
 	mkdir -p $(INSTALL_DIR)
