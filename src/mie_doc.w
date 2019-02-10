@@ -1,7 +1,7 @@
 % This program by Scott Prahl
 % It is distributed WITHOUT ANY WARRANTY, express or implied.
 
-% Copyright (C) 2012 Scott Prahl
+% Copyright (C) 2012-2019 Scott Prahl
 
 % Permission is granted to make and distribute verbatim copies of this
 % document provided that the copyright notice and this permission notice
@@ -22,7 +22,7 @@
   \vfill}
 \def\botofcontents{\vfill
 \noindent
-Copyright \copyright\ 2012 Scott Prahl
+Copyright \copyright\ 2012-2019 Scott Prahl
 \bigskip\noindent
 Permission is granted to make and distribute verbatim copies of this
 document provided that the copyright notice and this permission notice
