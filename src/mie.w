@@ -643,10 +643,11 @@ struct c_complex z;
   	return;
   }
 
-  if (fabs(m.im * x) < ((13.78 * m.re - 10.8) * m.re + 3.9))                       
-    Dn_up(z, nstop, D);
+  if (m.re < 1 || m.re > 10 || fabs(m.im) > 10 ||
+                  fabs(x * m.im) >= 3.9 - 10.8 * m.re + 13.78 * m.re*m.re)
+      Dn_down(z, nstop, D);
   else
-    Dn_down(z, nstop, D);
+      Dn_up(z, nstop, D);
   }
   
 @ OK,  Here we go.  We need to start up the arrays.  First, recall
