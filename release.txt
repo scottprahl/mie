@@ -1,0 +1,20 @@
+# version stamps
+    Update VERSION in main makefile and in README.md
+    Update Copyright in src/mie_doc.w
+
+# sanity tests to ensure things still work
+    make test
+    make install-all
+    make dist
+
+# push all the changed files to the repository!
+
+# create release tag on github
+    
+    git tag v2.6.0
+    git push origin v2.6.0
+
+Upload to omlc.org
+    https://omlc.org/software/mie/mie_doc.pdf
+    https://omlc.org/software/mie/mie-2-6-0.zip
+    update https://omlc.org/software/mie/index.html
