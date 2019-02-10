@@ -18,3 +18,5 @@ Upload to omlc.org
     https://omlc.org/software/mie/mie_doc.pdf
     https://omlc.org/software/mie/mie-2-6-0.zip
     update https://omlc.org/software/mie/index.html
+
+Create a new release on github to hide previous releases
