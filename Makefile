@@ -1,13 +1,13 @@
 #
 #  Makefile by Scott Prahl Jan 2012
 #
-VERSION = 2-4-1
+VERSION = 2-6-0
 
 CFLAGS = -Wall -ansi -dynamic -fno-common -g
 
 LIB_EXT = .dylib		#MacOS X shared lib
 #LIB_EXT = .so			#linux shared lib
-LIB_EXT = .a			#static lib
+#LIB_EXT = .a			#static lib
 
 #Base directory - adapt as needed
 PREFIX=/usr/local
@@ -21,9 +21,9 @@ SHARED_LIB_OPT = -bundle -flat_namespace -undefined suppress
 DYNAMIC_LIB_OPT = -dynamiclib -install_name /usr/local/lib/libmie.dylib \
                   -compatibility_version 2.0 -current_version 2.0.0
 
-MAIN = Makefile README
+MAIN = Makefile README.md
 
-DOCS = 	doc/INSTALL doc/CHANGEFILE doc/mie_src.pdf
+DOCS = 	doc/mie_doc.pdf
 
 MMA = mma/Mietm.c mma/Mie.m mma/Mie.tm mma/Makefile
 
@@ -69,18 +69,18 @@ mma/Mie.exe:
 
 install: mie
 	mkdir -p $(BIN_INSTALL)
-	cp mie  $(BIN_INSTALL)
+	cp -f mie  $(BIN_INSTALL)
 
 libmie.h libmie$(LIB_EXT) : 
 	cd src ; make libmie$(LIB_EXT)
-	cp src/libmie.h .
-	cp src/libmie$(LIB_EXT) .
+	cp -f src/libmie.h .
+	cp -f src/libmie$(LIB_EXT) .
 
 install-lib: libmie$(LIB_EXT) libmie.h
 	mkdir -p $(LIB_INSTALL)
 	mkdir -p $(INC_INSTALL)
-	cp src/libmie.h $(INC_INSTALL)
-	cp src/libmie$(LIB_EXT) $(LIB_INSTALL)
+	cp -f src/libmie.h $(INC_INSTALL)
+	cp -f src/libmie$(LIB_EXT) $(LIB_INSTALL)
 	
 install-mma: mma/Mie.m mma/Mie.exe
 	mkdir -p $(MMA_INSTALL)
@@ -88,9 +88,11 @@ install-mma: mma/Mie.m mma/Mie.exe
 	cp mma/Mie.m $(MMA_INSTALL)
 	cp mma/Mie $(MMA_INSTALL)/External
 	
-install-all: mie libmie$(LIB_EXT) libmie.h mma/Mie.m mma/Mie.exe
+install-all:
+	make mie
 	make install
 	make install-lib
+	make mma/Mie.exe
 	make install-mma
 
 old/mie_src.pdf mie_doc_old : $(WSRC)
@@ -116,6 +118,7 @@ dist:
 	make test
 	make doc
 	make lib
+	make install-lib
 	make mma
 	mkdir -p       mie-$(VERSION)
 	mkdir -p       mie-$(VERSION)/doc

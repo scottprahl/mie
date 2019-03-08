@@ -97,7 +97,10 @@ realclean:
 doc : version $(WSRC)
 	cweave mie_doc
 	pdftex mie_doc
-	mv mie_doc.pdf ../doc/mie_src.pdf
+#	mv mie_doc.pdf ../doc/mie_src.pdf
+	qpdf mie_doc.pdf --pages mie_doc.pdf 77 mie_doc.pdf 1-76 -- mie_doc2.pdf
+	mv mie_doc2.pdf ../doc/mie_doc.pdf
+	rm mie_doc.pdf 
 
 mie_array.h :  mie_array.w
 	ctangle -bph mie_array.w

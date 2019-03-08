@@ -1,0 +1,31 @@
+# make sure all the .h and .c files have been pushed so that users
+# do not need ctangle
+    git status
+    git commit src/*.c src/*.h -m 'update ctangle files'
+
+# things to do when releasing a new version
+    make realclean
+    make test        # visually check for failures
+
+# version stamps
+    Update VERSION in main makefile and in README.md
+    Update Copyright in src/mie_doc.w
+
+# sanity tests to ensure things still work
+    make test
+    make install-all
+    make dist
+
+# push all the changed files to the repository!
+
+# create release tag on github
+    
+    git tag v2.6.0
+    git push origin v2.6.0
+
+# Upload to omlc.org
+    https://omlc.org/software/mie/mie_doc.pdf
+    https://omlc.org/software/mie/mie-2-6-0.zip
+    update https://omlc.org/software/mie/index.html
+
+# Create a new release on github  https://github.com/scottprahl/mie/releases/

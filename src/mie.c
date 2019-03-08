@@ -467,10 +467,11 @@ mie_error("Cannot allocate log array",8);
 return;
 }
 
-if(fabs(m.im*x)<((13.78*m.re-10.8)*m.re+3.9))
-Dn_up(z,nstop,D);
-else
+if(m.re<1||m.re> 10||fabs(m.im)> 10||
+fabs(x*m.im)>=3.9-10.8*m.re+13.78*m.re*m.re)
 Dn_down(z,nstop,D);
+else
+Dn_up(z,nstop,D);
 }
 
 /*:41*/
@@ -478,7 +479,7 @@ Dn_down(z,nstop,D);
 
 
 /*42:*/
-#line 671 "mie.w"
+#line 672 "mie.w"
 
 psi0= sin(x);
 psi1= psi0/x-cos(x);
@@ -498,7 +499,7 @@ bnm1= c_set(0.0,0.0);
 
 for(n= 1;n<=nstop;n++){
 /*43:*/
-#line 696 "mie.w"
+#line 697 "mie.w"
 
 if(m.re==0.0){
 an= c_sdiv(n*psi1/x-psi0,c_sub(c_smul(n/x,xi1),xi0));
@@ -523,7 +524,7 @@ bn= c_div(c_set(z1.re*psi1-psi0,z1.im*psi1),c_sub(c_mul(z1,xi1),xi0));
 #line 536 "mie.w"
 
 /*44:*/
-#line 734 "mie.w"
+#line 735 "mie.w"
 
 for(k= 0;k<nangles;k++){
 factor= (2.0*n+1.0)/(n+1.0)/n;
@@ -546,7 +547,7 @@ pi0[k]= factor;
 #line 537 "mie.w"
 
 /*45:*/
-#line 780 "mie.w"
+#line 781 "mie.w"
 
 factor= 2.0*n+1.0;
 *g+= (n*n-1.0)/n*(anm1.re*an.re+anm1.im*an.im+bnm1.re*bn.re+bnm1.im*bn.im);
@@ -561,7 +562,7 @@ qbcalc.im+= sign*factor*(an.im-bn.im);
 #line 538 "mie.w"
 
 /*46:*/
-#line 804 "mie.w"
+#line 805 "mie.w"
 
 factor= (2.0*n+1.0)/x;
 xi= c_sub(c_smul(factor,xi1),xi0);
@@ -581,7 +582,7 @@ bnm1= bn;
 }
 
 /*47:*/
-#line 817 "mie.w"
+#line 818 "mie.w"
 
 *qsca*= 2/(x*x);
 *qext*= 2/(x*x);
@@ -592,7 +593,7 @@ bnm1= bn;
 #line 542 "mie.w"
 
 /*48:*/
-#line 823 "mie.w"
+#line 824 "mie.w"
 
 if(m.re> 0)free_carray(D);
 
@@ -611,15 +612,15 @@ free_darray(tau);
 #line 41 "mie.w"
 
 /*51:*/
-#line 845 "mie.w"
+#line 846 "mie.w"
 
 /*50:*/
-#line 842 "mie.w"
+#line 843 "mie.w"
 
 void ez_Mie(double x,double n,double*qsca,double*g)
 
 /*:50*/
-#line 846 "mie.w"
+#line 847 "mie.w"
 
 {
 long nangles= 0;
@@ -640,17 +641,17 @@ Mie(x,m,mu,nangles,s1,s2,&qext,qsca,&qback,g);
 #line 42 "mie.w"
 
 /*53:*/
-#line 880 "mie.w"
+#line 881 "mie.w"
 
 /*52:*/
-#line 875 "mie.w"
+#line 876 "mie.w"
 
 void ez_Mie_Full(double x,double m_real,double m_imag,long nangles,double*mu,
 double*s1_real,double*s1_imag,double*s2_real,double*s2_imag,
 double*qext,double*qsca,double*qback,double*g)
 
 /*:52*/
-#line 881 "mie.w"
+#line 882 "mie.w"
 
 {
 struct c_complex*s1= NULL;
