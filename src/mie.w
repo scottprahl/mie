@@ -429,7 +429,7 @@ long j;
   for (j = 0; j < nangles; j++) {
     muj = mu[j];
     angle = 2.0 *muj*muj- 1.0;
-    s1[j].re = ahat1.re + (bhat1.re + ahat2.re) * muj ;
+    s1[j].re = ahat1.re + (bhat1.re + ahat2.re) * muj;
     s1[j].im = ahat1.im + (bhat1.im + ahat2.im) * muj;
     s2[j].re = bhat1.re + ahat1.re * muj + ahat2.re * angle;
     s2[j].im = bhat1.im + ahat1.im * muj + ahat2.im * angle;
