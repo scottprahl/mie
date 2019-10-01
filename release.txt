@@ -14,8 +14,7 @@
 # sanity tests to ensure things still work
     make test
     make install-all
-    make dist
-    make windist
+    make dists
 
 # push all the changed files to the repository!
 
