@@ -15,17 +15,19 @@
     make test
     make install-all
     make dist
+    make windist
 
 # push all the changed files to the repository!
 
 # create release tag on github
     
-    git tag v2.6.0
-    git push origin v2.6.0
+    git tag v2.6.2
+    git push origin v2.6.2
 
 # Upload to omlc.org
     https://omlc.org/software/mie/mie_doc.pdf
-    https://omlc.org/software/mie/mie-2-6-0.zip
+    https://omlc.org/software/mie/mie-2-6-2.zip
+    https://omlc.org/software/mie/mie-win-latest.zip
     update https://omlc.org/software/mie/index.html
 
 # Create a new release on github  https://github.com/scottprahl/mie/releases/
