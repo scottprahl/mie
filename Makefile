@@ -1,7 +1,7 @@
 #
 #  Makefile by Scott Prahl Jan 2012
 #
-VERSION = 2-6-0
+VERSION = 2-6-1
 
 CFLAGS = -Wall -ansi -dynamic -fno-common -g
 

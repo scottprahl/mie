@@ -2,4 +2,4 @@
 /* version number is set in                   <../Makefile>  */
 /* date is the last modification date for     <../Makefile>  */
 
-char *Version = "2-6-0 (16:44:33 03/07/19)";
+char *Version = "2-6-1 (17:39:52 09/30/19)";
