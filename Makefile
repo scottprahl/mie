@@ -119,6 +119,11 @@ old/mie_src.pdf mie_doc_old : $(WSRC)
 tidy:
 	cd src ; make tidy
 
+dists:
+	make windist
+	make realclean
+	make dist
+	
 dist: 
 	make
 	make test
