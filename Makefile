@@ -1,7 +1,7 @@
 #
 #  Makefile by Scott Prahl Jan 2012
 #
-VERSION = 2-6-2
+VERSION = 2-6-3
 
 CFLAGS = -Wall -ansi -dynamic -fno-common -g
 
@@ -130,18 +130,18 @@ dist:
 	make doc
 	make lib
 	make install-lib
-	make mma
+#	make mma
 	mkdir -p       mie-$(VERSION)
 	mkdir -p       mie-$(VERSION)/doc
 	mkdir -p       mie-$(VERSION)/src
-	mkdir -p       mie-$(VERSION)/mma
+#	mkdir -p       mie-$(VERSION)/mma
 	ln $(MAIN)     mie-$(VERSION)
 	ln $(DOCS)     mie-$(VERSION)/doc
 	ln $(WSRC)     mie-$(VERSION)/src
 	ln $(HSRC)     mie-$(VERSION)/src
 	ln $(CSRC)     mie-$(VERSION)/src
 	ln $(OSRC)     mie-$(VERSION)/src
-	ln $(MMA)      mie-$(VERSION)/mma
+#	ln $(MMA)      mie-$(VERSION)/mma
 #	tar cvf - mie-$(VERSION) | gzip  > mie-$(VERSION).tar.gz
 	zip -r mie-$(VERSION) mie-$(VERSION)
 	rm -rf mie-$(VERSION)
