@@ -1,18 +1,14 @@
 # Mie Scattering
 
-v2.6.0
-
-February 2019
-
 by Scott Prahl
 
 [![github](https://img.shields.io/github/v/tag/scottprahl/mie?label=github&color=68CA66)](https://github.com/scottprahl/mie)
 [![License](https://img.shields.io/github/license/scottprahl/mie?color=68CA66)](https://github.com/scottprahl/mie/blob/master/LICENSE.txt)
 [![Docs](https://readthedocs.org/projects/mie/badge?color=68CA66)](https://mie.readthedocs.io)
 ![Downloads](https://img.shields.io/github/downloads/scottprahl/mie/total?color=68CA66)
-[![doi](https://zenodo.org/badge/99259684.svg)](https://zenodo.org/badge/latestdoi/99259684)
 
 ___
+
 ## OVERVIEW
 
 Yet another Mie scattering program.  This one was written in 1995 and based on Wiscombe's well-tested and documented MIEV0 FORTRAN code.  It works and is the basis for the on-line Mie scattering calculator at [omlc.org](http://omlc.org/calc/mie_calc.html)
