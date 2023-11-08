@@ -1,5 +1,3 @@
-/*2:*/
-#line 4 "mie_cylinder_main.w"
 
 #include <math.h> 
 #include <stdlib.h> 
@@ -10,8 +8,6 @@
 #include "mie_cylinder.h"
 #define  PI 3.14159265358979
 
-/*3:*/
-#line 16 "mie_cylinder_main.w"
 
 int main(int argc,char**argv)
 {
@@ -81,8 +77,7 @@ free_carray(t1);
 free_carray(t2);
 free_carray(t3);
 return(0);
-}/*:3*/
-#line 14 "mie_cylinder_main.w"
+}
 
 
-/*:2*/
+
