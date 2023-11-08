@@ -68,6 +68,10 @@ and then load the `mie` module to use in Mathematica.  Very cool.
 
 You'll just want to go to the [miepython](https://github.com/scottprahl/miepython) and download the pure python package.
 
+## License
+
+This code is licensed under the 3-clause MIT license.
+
 ## Author
 
 Scott Prahl

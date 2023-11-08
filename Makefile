@@ -1,7 +1,7 @@
 #
 #  Makefile by Scott Prahl Jan 2012
 #
-VERSION = 2-6-0
+VERSION = 2-6-2
 
 CFLAGS = -Wall -ansi -dynamic -fno-common -g
 
@@ -64,6 +64,12 @@ mie: $(WSRC) $(OSRC)
 	cp src/mie .
 	cp src/miecyl .
 
+mie.exe: $(WSRC) $(NRSRC)
+	cd src ; make clean
+	cd src ; make CC=i686-w64-mingw32-gcc mie
+	mv src/mie.exe mie.exe
+	cd src ; make clean
+
 mma/Mie.exe:
 	cd mma ; make
 
@@ -113,6 +119,11 @@ old/mie_src.pdf mie_doc_old : $(WSRC)
 tidy:
 	cd src ; make tidy
 
+dists:
+	make windist
+	make realclean
+	make dist
+	
 dist: 
 	make
 	make test
@@ -135,6 +146,26 @@ dist:
 	zip -r mie-$(VERSION) mie-$(VERSION)
 	rm -rf mie-$(VERSION)
 	
+windist: mie.exe
+	make doc
+	cd src ; make tidy
+	mkdir -p           mie-win-$(VERSION)
+	mkdir -p           mie-win-$(VERSION)/doc
+	mkdir -p           mie-win-$(VERSION)/src
+	ln mie.exe         mie-win-$(VERSION)
+	ln $(MAIN)         mie-win-$(VERSION)
+	ln $(DOCS)         mie-win-$(VERSION)/doc
+	ln $(WSRC)         mie-win-$(VERSION)/src
+	ln $(HSRC)         mie-win-$(VERSION)/src
+	ln $(CSRC)         mie-win-$(VERSION)/src
+	ln $(OSRC)         mie-win-$(VERSION)/src
+	src/toDOS.pl       mie-win-$(VERSION)/src/*.c
+	src/toDOS.pl       mie-win-$(VERSION)/src/*.h
+	rm mie-win-$(VERSION)/src/*.bak 
+	zip -r mie-win-$(VERSION) mie-win-$(VERSION)
+	rm -rf mie-win-$(VERSION)
+	cp mie-win-$(VERSION).zip mie-win-latest.zip
+
 zip: 
 	make test
 	make tidy
@@ -185,7 +216,7 @@ help::
 	echo "clean       -- remove most generated objects";\
 	echo "docs        -- generate TEX out of all files";\
 	echo "dist        -- gzipped tarball of all files";\
-	echo "install     -- install ad and iad programs";\
+	echo "install     -- install mie programs";\
 	echo "install-lib -- install interface and library programs";\
 	echo "install-mma -- install Mathematica files";\
 	echo "install-all -- install all the above";\
@@ -193,7 +224,7 @@ help::
 	echo "mie         -- compile Mie scattering program";\
 	echo "mma         -- adding-doubling files for Mathematica interface";\
 	echo "realclean   -- remove all generated objects";\
-	echo "test        -- run iad program on a bunch of test files";\
+	echo "test        -- run mie program on a bunch of test files";\
 	echo "tidy        -- generate .c and .h files"
 
 src/version.c :
