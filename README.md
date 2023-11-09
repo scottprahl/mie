@@ -4,8 +4,9 @@ by Scott Prahl
 
 [![github](https://img.shields.io/github/v/tag/scottprahl/mie?label=github&color=68CA66)](https://github.com/scottprahl/mie)
 [![License](https://img.shields.io/github/license/scottprahl/mie?color=68CA66)](https://github.com/scottprahl/mie/blob/master/LICENSE.txt)
-[![Docs](https://readthedocs.org/projects/mie/badge?color=68CA66)](https://mie.readthedocs.io)
+![Static Badge](https://img.shields.io/badge/docs-passing-68CA66?link=https%3A%2F%2Fraw.githubusercontent.com%2Fscottprahl%2Fmie%2Fmaster%2Fdoc%2Fmie_doc.pdf)
 ![Downloads](https://img.shields.io/github/downloads/scottprahl/mie/total?color=68CA66)
+![Test](https://github.com/scottprahl/mie/actions/workflows/test.yml/badge.svg)
 
 ___
 
