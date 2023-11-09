@@ -3,8 +3,8 @@
 by Scott Prahl
 
 [![github](https://img.shields.io/github/v/tag/scottprahl/mie?label=github&color=68CA66)](https://github.com/scottprahl/mie)
-[![License](https://img.shields.io/github/license/scottprahl/mie?color=68CA66)](https://github.com/scottprahl/mie/blob/master/LICENSE.txt)
-![Static Badge](https://img.shields.io/badge/docs-passing-68CA66?link=https://raw.githubusercontent.com/scottprahl/mie/master/doc/mie_doc.pdf)
+[![License](https://img.shields.io/github/license/scottprahl/mie?color=68CA66)](https://github.com/scottprahl/mie/blob/master/LICENSE)
+[![Docs](https://img.shields.io/badge/docs-passing-68CA66)](https://raw.githubusercontent.com/scottprahl/mie/master/doc/mie_doc.pdf)
 ![Downloads](https://img.shields.io/github/downloads/scottprahl/mie/total?color=68CA66)
 ![Test](https://github.com/scottprahl/mie/actions/workflows/test.yaml/badge.svg)
 
