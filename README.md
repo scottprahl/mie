@@ -6,8 +6,9 @@ by Scott Prahl
 [![License](https://img.shields.io/github/license/scottprahl/mie?color=68CA66)](https://github.com/scottprahl/mie/blob/master/LICENSE)
 [![Docs](https://img.shields.io/badge/docs-passing-68CA66)](https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf)
 ![Test](https://github.com/scottprahl/mie/actions/workflows/test.yaml/badge.svg)
-![Downloads](https://img.shields.io/github/downloads/scottprahl/mie/total?color=68CA66)
 [![DOI](https://zenodo.org/badge/102227669.svg)](https://zenodo.org/doi/10.5281/zenodo.10087653)
+
+Mie Scattering is a computational project for simulating the scattering of electromagnetic waves by small particles. Utilizing the robust MIEV0 FORTRAN code by Wiscombe, this software offers researchers and scientists an accurate and reliable tool for Mie scattering calculations.
 
 ___
 
