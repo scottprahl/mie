@@ -19,7 +19,6 @@
 # push all the changed files to the repository!
 
 # create release tag on github
-    
     git tag v2.6.2
     git push origin v2.6.2
 
@@ -29,4 +28,5 @@
     https://omlc.org/software/mie/mie-win-latest.zip
     update https://omlc.org/software/mie/index.html
 
-# Create a new release on github  https://github.com/scottprahl/mie/releases/
+# Create a new release on github and add mie-win-2-6-3.zip
+    https://github.com/scottprahl/mie/releases/

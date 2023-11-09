@@ -7,5 +7,5 @@ date-released: '2023-11-09'
 doi: 10.5281/zenodo.10087653
 message: If you use this software, please cite it as below.
 title: 'mie: command-line calculations of Mie scattering'
-url: https://zenodo.org/badge/latestdoi/10087653
+url: https://zenodo.org/doi/10.5281/zenodo.10087654
 version: v2.6.3
