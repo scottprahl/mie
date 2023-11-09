@@ -130,6 +130,7 @@ dist:
 	make doc
 	make lib
 	make install-lib
+	make tidy
 #	make mma
 	mkdir -p       mie-$(VERSION)
 	mkdir -p       mie-$(VERSION)/doc
