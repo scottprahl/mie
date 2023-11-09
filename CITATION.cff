@@ -4,8 +4,8 @@ authors:
   orcid: https://orcid.org/0000-0003-1468-6851
 cff-version: 1.2.0
 date-released: '2023-10-24'
-doi: 10.5281/zenodo.8352116
+doi: 10.5281/zenodo.10087653
 message: If you use this software, please cite it as below.
 title: 'mie: command-line calculations of Mie scattering'
-url: https://zenodo.org/badge/latestdoi/107437651
+url: https://zenodo.org/badge/latestdoi/10087653
 version: 2.6.2
