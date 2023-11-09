@@ -1,6 +1,7 @@
 # Compiled source #
 ###################
 *.dyld
+*.dylib
 *.o
 *.so
 *.a
