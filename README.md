@@ -4,7 +4,7 @@ by Scott Prahl
 
 [![github](https://img.shields.io/github/v/tag/scottprahl/mie?label=github&color=68CA66)](https://github.com/scottprahl/mie)
 [![License](https://img.shields.io/github/license/scottprahl/mie?color=68CA66)](https://github.com/scottprahl/mie/blob/master/LICENSE)
-[![Docs](https://img.shields.io/badge/docs-passing-68CA66)](https://raw.githubusercontent.com/scottprahl/mie/master/doc/mie_doc.pdf)
+[![Docs](https://img.shields.io/badge/docs-passing-68CA66)](https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf)
 ![Downloads](https://img.shields.io/github/downloads/scottprahl/mie/total?color=68CA66)
 ![Test](https://github.com/scottprahl/mie/actions/workflows/test.yaml/badge.svg)
 
@@ -13,9 +13,9 @@ ___
 ## OVERVIEW
 
 Yet another Mie scattering program.  This one was written in 1995 and based on Wiscombe's well-tested and documented MIEV0 FORTRAN code.  It works and is the basis for the on-line Mie scattering calculator at [omlc.org](http://omlc.org/calc/mie_calc.html)
-I have used Wiscombe's Mie testing data to validate this code and it works for small spheres and very large spheres (sphere sizes with pi*d/lambda>10,000).
+I have used Wiscombe's Mie testing data to validate this code and it works for small spheres and very large spheres (sphere sizes with 𝜋d/λ > 10,000).
 
-The source code is written in [CWEB](http://www-cs-faculty.stanford.edu/~knuth/cweb.html), which allows excellent documentation of scientific programs. Basically, there is a program `ctangle` that converts the cweb code to C. There is another program `cweave` that converts the cweb code to TeX. This then generates really [nice documentation](https://github.com/scottprahl/doc/mie_src.pdf), however if you are using the C code directly it means that you'll see none of my comments. 
+The source code is written in [CWEB](http://www-cs-faculty.stanford.edu/~knuth/cweb.html), which allows excellent documentation of scientific programs. Basically, there is a program `ctangle` that converts the cweb code to C. There is another program `cweave` that converts the cweb code to TeX. This then generates really [nice documentation](https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf), however if you are using the C code directly it means that you'll see none of my comments. 
 
 There is also a scattering program buried in the `src` directory for cylinders that I translated from some FORTRAN code by Mackowski.  This is much less well tested.
 
