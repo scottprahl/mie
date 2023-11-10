@@ -30,6 +30,12 @@ Features
 - Includes additional scattering code for cylinders.
 - Complemented by `miepython <https://github.com/scottprahl/miepython>`_ for Python users.
 
+The source code is written in `CWEB <https://github.com/ascherer/cweb>'_, which
+allows excellent documentation of scientific programs. Basically, there is a
+program ``ctangle`` that converts cweb code to C. There is another program
+``cweave`` that converts cweb code to TeX. This then generates really 'nice
+documentation <https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf>'_.
+
 Getting Started
 ---------------
 
@@ -64,7 +70,12 @@ Download the latest executable from the `Releases page <https://github.com/scott
 Python Package
 ^^^^^^^^^^^^^^
 
-For Python support, install `miepython <https://github.com/scottprahl/miepython>`_ from its repository.
+I have written a pure python version of the sphere scattering code that is based on this code.  
+It is a bit slower, but because it is python, but it has a number of nice affordances that make doing Mie calculations (and plotting them) less of a hassle.
+
+.. code-block:: shell
+
+    pip install miepython
 
 Usage
 -----
