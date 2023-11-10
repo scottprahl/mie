@@ -16,19 +16,19 @@ Mie Scattering
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.10087653.svg
    :target: https://doi.org/10.5281/zenodo.10087653
 
-Mie Scattering is a computational project for simulating the scattering of
-electromagnetic waves by small particles. Utilizing the robust FORTRAN
-code by Warren Wiscombe, this software offers researchers and scientists an accurate
+Mie Scattering is a method for simulating the scattering of
+electromagnetic waves (light) by spheres. Based on the robust FORTRAN
+implementation by Warren Wiscombe, this software offers researchers and scientists an accurate
 and reliable tool for Mie scattering calculations.
 
 Features
 --------
 
-- Accurate simulation of scattering for small to very large sphere sizes (𝜋d/λ > 10,000).
+- Accurate simulation of scattering for small to very large sphere sizes (𝜋d/λ > 10,000)
 
-- Tested against `MIEV0 <https://www.researchgate.net/publication/253485579_Mie_Scattering_Calculations_Advances_in_Technique_and_Fast_Vector-speed_Computer_Codes>`_ implementation.
+- Tested against `MIEV0 <https://www.researchgate.net/publication/253485579_Mie_Scattering_Calculations_Advances_in_Technique_and_Fast_Vector-speed_Computer_Codes>`_ implementation
 
-- Includes additional scattering code for cylinders.
+- Used to a `web-based Mie calculator <https://omlc.org/calc/mie_calc.html>`_
 
 The source code is written in `CWEB <https://github.com/ascherer/cweb>`_, which
 allows excellent documentation of scientific programs. Basically, there is a
