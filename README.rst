@@ -30,8 +30,6 @@ Features
 
 - Includes additional scattering code for cylinders.
 
-- Complemented by `miepython <https://github.com/scottprahl/miepython>`_ for Python users.
-
 The source code is written in `CWEB <https://github.com/ascherer/cweb>`_, which
 allows excellent documentation of scientific programs. Basically, there is a
 program ``ctangle`` that converts cweb code to C. There is another program
@@ -84,7 +82,7 @@ Installation is easy:
 Usage
 -----
 
-Here is a simple implementation that calculates scattering parameters from 0.360 micron latex
+Here is a simple implementation that calculates scattering parameters from 360 nm latex
 spheres by UV-A light.
 
 .. code-block:: c
@@ -126,7 +124,7 @@ spheres by UV-A light.
         return 0;
     }
 
-When compiled (see `src/Makefile` for details), this produces::
+When compiled (see ``src/Makefile`` for details), this produces::
 
     Sphere concentration is              1% gm spheres/gm
     Medium refractive index is        1.3400
@@ -158,7 +156,7 @@ When compiled (see `src/Makefile` for details), this produces::
 License
 -------
 
-This project is licensed under the BSD 3-clause License.
+This project is licensed under the `BSD 3-clause License <https://github.com/scottprahl/mie/blob/master/LICENSE>`_.
 
 Citation
 --------
@@ -167,9 +165,10 @@ If you use this software in your research, please cite it as below:
 
 .. code-block:: bibtex
 
-    @misc{prahl_mie_scattering,
+    @misc{prahl_mie,
       author = {Scott Prahl},
       title = {Mie Scattering},
+      version = {v2.6.3},
       year = {2023},
       doi = {10.5281/zenodo.10087653},
       url = {https://github.com/scottprahl/mie}
