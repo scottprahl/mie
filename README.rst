@@ -18,7 +18,7 @@ Mie Scattering
 
 Mie Scattering is a computational project for simulating the scattering of
 electromagnetic waves by small particles. Utilizing the robust FORTRAN
-code by Wiscombe, this software offers researchers and scientists an accurate
+code by Warren Wiscombe, this software offers researchers and scientists an accurate
 and reliable tool for Mie scattering calculations.
 
 Features
@@ -26,7 +26,8 @@ Features
 
 - Accurate simulation of scattering for small to very large sphere sizes (𝜋d/λ > 10,000).
 
-- Tested against MIEV0 implementation.
+- Tested against `MIEV0 <https://www.researchgate.net/publication/253485579_Mie_Scattering_Calculations_Advances_in_Technique_and_Fast_Vector-speed_Computer_Codes>`_
+implementation.
 
 - Includes additional scattering code for cylinders.
 
