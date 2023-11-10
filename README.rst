@@ -17,7 +17,7 @@ Mie Scattering
    :target: https://doi.org/10.5281/zenodo.10087653
 
 Mie Scattering is a computational project for simulating the scattering of
-electromagnetic waves by small particles. Utilizing the robust MIEV0 FORTRAN
+electromagnetic waves by small particles. Utilizing the robust FORTRAN
 code by Wiscombe, this software offers researchers and scientists an accurate
 and reliable tool for Mie scattering calculations.
 
@@ -26,7 +26,7 @@ Features
 
 - Accurate simulation of scattering for small to very large sphere sizes (𝜋d/λ > 10,000).
 
-- Based on the well-tested MIEV0 FORTRAN code.
+- Tested against MIEV0 implementation.
 
 - Includes additional scattering code for cylinders.
 
@@ -35,8 +35,8 @@ Features
 The source code is written in `CWEB <https://github.com/ascherer/cweb>`_, which
 allows excellent documentation of scientific programs. Basically, there is a
 program ``ctangle`` that converts cweb code to C. There is another program
-``cweave`` that converts cweb code to TeX. This then generates really `nice
-documentation <https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf>`_.
+``cweave`` that converts cweb code to TeX. This then generates `nicely
+documented source code <https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf>`_.
 
 Getting Started
 ---------------
@@ -62,7 +62,7 @@ Run the following command to build and install:
 
     make install
 
-The executable (``mie``) will be installed in ``/usr/local/bin/``.
+The executable will be installed as ``/usr/local/bin/mie``.
 
 Windows
 ^^^^^^^
@@ -72,8 +72,10 @@ Download the latest executable from the `Releases page <https://github.com/scott
 Python Package
 ^^^^^^^^^^^^^^
 
-I have written a pure python version of the sphere scattering code that is based on this code.  
-It is a bit slower, but because it is python, but it has a number of nice affordances that make doing Mie calculations (and plotting them) less of a hassle.
+I have written a pure python version of Mie scattering based on this code.
+`miepython <https://github.com/scottprahl/miepython/>`_ is a bit slower, but it 
+allows one to run simulations in `jupyterlab <https://jupyter.org>_` interactively.  
+Installation is easy: 
 
 .. code-block:: shell
 
@@ -121,7 +123,7 @@ Usage
         return 0;
     }
 
-When compiled (see `src/Makefile`) this produces::
+When compiled (see `src/Makefile` for details), this produces::
 
     Sphere concentration is              1% gm spheres/gm
     Medium refractive index is        1.3400
