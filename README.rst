@@ -25,16 +25,18 @@ Features
 --------
 
 - Accurate simulation of scattering for small to very large sphere sizes (𝜋d/λ > 10,000).
+
 - Based on the well-tested MIEV0 FORTRAN code.
-- Source code documented with `CWEB <https://github.com/ascherer/cweb>`_ or high maintainability.
+
 - Includes additional scattering code for cylinders.
+
 - Complemented by `miepython <https://github.com/scottprahl/miepython>`_ for Python users.
 
-The source code is written in `CWEB <https://github.com/ascherer/cweb>'_, which
+The source code is written in `CWEB <https://github.com/ascherer/cweb >'_, which
 allows excellent documentation of scientific programs. Basically, there is a
 program ``ctangle`` that converts cweb code to C. There is another program
-``cweave`` that converts cweb code to TeX. This then generates really 'nice
-documentation <https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf>'_.
+``cweave`` that converts cweb code to TeX. This then generates really `nice
+documentation <https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf>`_.
 
 Getting Started
 ---------------
@@ -154,7 +156,7 @@ When compiled (see `src/Makefile`) this produces::
 License
 -------
 
-This project is licensed under the 3-clause BSD License - see the `LICENSE <LICENSE>`_ file for details.
+This project is licensed under the BSD 3-clause License.
 
 Citation
 --------
