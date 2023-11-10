@@ -32,7 +32,7 @@ Features
 
 - Complemented by `miepython <https://github.com/scottprahl/miepython>`_ for Python users.
 
-The source code is written in `CWEB <https://github.com/ascherer/cweb >'_, which
+The source code is written in `CWEB <https://github.com/ascherer/cweb>`_, which
 allows excellent documentation of scientific programs. Basically, there is a
 program ``ctangle`` that converts cweb code to C. There is another program
 ``cweave`` that converts cweb code to TeX. This then generates really `nice
