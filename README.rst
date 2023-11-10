@@ -26,8 +26,7 @@ Features
 
 - Accurate simulation of scattering for small to very large sphere sizes (𝜋d/λ > 10,000).
 
-- Tested against `MIEV0 <https://www.researchgate.net/publication/253485579_Mie_Scattering_Calculations_Advances_in_Technique_and_Fast_Vector-speed_Computer_Codes>`_
-implementation.
+- Tested against `MIEV0 <https://www.researchgate.net/publication/253485579_Mie_Scattering_Calculations_Advances_in_Technique_and_Fast_Vector-speed_Computer_Codes>`_ implementation.
 
 - Includes additional scattering code for cylinders.
 
@@ -75,7 +74,7 @@ Python Package
 
 I have written a pure python version of Mie scattering based on this code.
 `miepython <https://github.com/scottprahl/miepython/>`_ is a bit slower, but it 
-allows one to run simulations in `jupyterlab <https://jupyter.org>_` interactively.  
+allows one to run simulations in `jupyterlab <https://jupyter.org>`_ interactively.  
 Installation is easy: 
 
 .. code-block:: shell
@@ -84,6 +83,9 @@ Installation is easy:
 
 Usage
 -----
+
+Here is a simple implementation that calculates scattering parameters from 0.360 micron latex
+spheres by UV-A light.
 
 .. code-block:: c
 
@@ -109,7 +111,7 @@ Usage
         printf("    d    lambda     x      N       Q_sca    g      mu_s    mu_s'\n");
         printf("  [nm]    [nm]     [-]   [#/ml]     [-]    [-]    [1/cm]  [1/cm]\n");
 
-        for (lambda_nm = 300; lambda_nm <= 400; lambda_nm += 5) {
+        for (lambda_nm = 315; lambda_nm <= 400; lambda_nm += 5) {
             x = (diameter_nm * M_PI) / (lambda_nm / (n_sphere / n_medium));
             sphere_area_cm2 = M_PI * pow(diameter_nm / 1e7, 2) / 4.0;
             sphere_volume_ml = M_PI * pow(diameter_nm / 1e7, 3) / 6.0;
@@ -134,9 +136,6 @@ When compiled (see `src/Makefile` for details), this produces::
 
         d    lambda     x      N       Q_sca    g      mu_s    mu_s'
       [nm]    [nm]     [-]   [#/ml]     [-]    [-]    [1/cm]  [1/cm]
-      360.0   300.0    4.47 3.86e+11  1.2843 0.87699  504.82   62.10 
-      360.0   305.0    4.40 3.86e+11  1.2453 0.87409  489.49   61.63 
-      360.0   310.0    4.33 3.86e+11  1.2075 0.87131  474.65   61.08 
       360.0   315.0    4.26 3.86e+11  1.1711 0.86861  460.32   60.48 
       360.0   320.0    4.19 3.86e+11  1.1360 0.86600  446.54   59.84 
       360.0   325.0    4.13 3.86e+11  1.1024 0.86347  433.34   59.16 
