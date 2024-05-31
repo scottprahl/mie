@@ -1,20 +1,22 @@
-Mie Scattering
-==============
-
-.. image:: https://img.shields.io/github/v/tag/scottprahl/mie?label=github&color=68CA66
+.. |github| image:: https://img.shields.io/github/v/tag/scottprahl/mie?label=github&color=68CA66
    :target: https://github.com/scottprahl/mie
 
-.. image:: https://img.shields.io/github/license/scottprahl/mie?color=68CA66)
-   :target: https://github.com/scottprahl/mie/blob/master/LICENSE
+.. |license| image:: https://img.shields.io/github/license/scottprahl/mie?color=68CA66)
+   :target: https://github.com/scottprahl/mie/blob/main/LICENSE
 
-.. image:: https://img.shields.io/badge/docs-passing-68CA66
-   :target: https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf
+.. |docs| image:: https://img.shields.io/badge/docs-passing-68CA66
+   :target: https://github.com/scottprahl/mie/blob/main/doc/mie_doc.pdf
 
-.. image:: https://github.com/scottprahl/mie/actions/workflows/test.yaml/badge.svg
+.. |test| image:: https://github.com/scottprahl/mie/actions/workflows/test.yaml/badge.svg
    :target: https://github.com/scottprahl/mie/actions
 
-.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.10087653.svg
+.. |zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.10087653.svg
    :target: https://doi.org/10.5281/zenodo.10087653
+
+|github|  |license| |docs| |test| |zenodo|
+
+Mie Scattering
+==============
 
 Mie Scattering is a method for simulating the scattering of
 electromagnetic waves (light) by spheres. Based on the robust FORTRAN
@@ -34,7 +36,7 @@ The source code is written in `CWEB <https://github.com/ascherer/cweb>`_, which
 allows excellent documentation of scientific programs. Basically, there is a
 program ``ctangle`` that converts cweb code to C. There is another program
 ``cweave`` that converts cweb code to TeX. This then generates `nicely
-documented source code <https://github.com/scottprahl/mie/blob/master/doc/mie_doc.pdf>`_.
+documented source code <https://github.com/scottprahl/mie/blob/main/doc/mie_doc.pdf>`_.
 
 Getting Started
 ---------------
@@ -156,7 +158,7 @@ When compiled (see ``src/Makefile`` for details), this produces::
 License
 -------
 
-This project is licensed under the `BSD 3-clause License <https://github.com/scottprahl/mie/blob/master/LICENSE>`_.
+This project is licensed under the `BSD 3-clause License <https://github.com/scottprahl/mie/blob/main/LICENSE>`_.
 
 Citation
 --------
