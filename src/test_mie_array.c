@@ -3,14 +3,14 @@
 #include <stdio.h>
 #include "mie_array.h"
 
-void 
+void
 main()
 {
 
-    double             *x;
-    double             *y;
-    long		i            , size;
-    double		min        , max;
+    double	       *x;
+    double	       *y;
+    long		i, size;
+    double		min, max;
 
     size = 10;
     printf("starting\n");

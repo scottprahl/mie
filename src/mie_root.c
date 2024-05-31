@@ -7,9 +7,12 @@
 
 
 void		    bracketroot(double (*fx) (double), double x1, double x2, long n,
-       		    double	    xb1[], double xb2[], long *nrequested){
-    long		nfound       , i;
-    double		x          , fp, fc, dx;
+			      double xb1[], double xb2[], long *nrequested){
+
+
+
+    long		nfound, i;
+    double		x, fp, fc, dx;
 
     if ((n <= 0) | (*nrequested <= 0))
 	return;
@@ -37,10 +40,13 @@ void		    bracketroot(double (*fx) (double), double x1, double x2, long n,
 
 
 double		    saferoot(void (*funcd) (double, double *, double *), double x1, double x2, double xacc){
-    double		df         , dx, dxold, f, fh, fl;
-    double		temp       , xh, xl, rts;
-    double		temp1      , temp2;
-    long		j            , MAXIT = 100;
+
+
+
+    double		df, dx, dxold, f, fh, fl;
+    double		temp, xh, xl, rts;
+    double		temp1, temp2;
+    long		j, MAXIT = 100;
 
     (*funcd) (x1, &fl, &df);
     if (fl == 0.0)
@@ -56,6 +62,8 @@ double		    saferoot(void (*funcd) (double, double *, double *), double x1, doub
 	printf("saferoot -- x2  = %10.5f; f(x2) = %10.5f \n", x2, fh);
 	exit(1);
     }
+
+
     if (fl < 0.0) {
 	xl = x1;
 	xh = x2;

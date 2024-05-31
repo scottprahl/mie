@@ -9,9 +9,11 @@
 
 
 
-static void 
+static void
 mie_error(char *s, int n)
 {
+
+
     if (MIE_VERBOSE_ERROR_REPORTING) {
 	fprintf(stderr, "Mie Error %d -- %s\n", n, s);
 	exit(n);
@@ -21,9 +23,11 @@ mie_error(char *s, int n)
 
 
 
-struct c_complex 
+struct c_complex
 Lentz_Dn(struct c_complex z, long n)
 {
+
+
     struct c_complex	alpha_j1, alpha_j2, zinv, aj;
     struct c_complex	alpha, result, ratio, runratio;
 
@@ -41,6 +45,7 @@ Lentz_Dn(struct c_complex z, long n)
 
 
     do {
+
 	aj.re = zinv.re - aj.re;
 	aj.im = zinv.im - aj.im;
 	alpha_j1 = c_add(c_inv(alpha_j1), aj);
@@ -63,9 +68,11 @@ Lentz_Dn(struct c_complex z, long n)
 
 
 
-void 
+void
 Dn_down(struct c_complex z, long nstop, struct c_complex *D)
 {
+
+
     long		k;
     struct c_complex	zinv, k_over_z;
 
@@ -80,9 +87,11 @@ Dn_down(struct c_complex z, long nstop, struct c_complex *D)
 
 
 
-void 
+void
 Dn_up(struct c_complex z, long nstop, struct c_complex *D)
 {
+
+
     struct c_complex	zinv, k_over_z;
     long		k;
 
@@ -98,15 +107,18 @@ Dn_up(struct c_complex z, long nstop, struct c_complex *D)
 
 
 
-void 
+void
 small_Mie(double x, struct c_complex m, double *mu,
 	  long nangles, struct c_complex *s1,
 	  struct c_complex *s2, double *qext, double *qsca,
 	  double *qback, double *g)
 {
+
+
+
     struct c_complex	ahat1, ahat2, bhat1;
     struct c_complex	z0, m2, m4;
-    double		x2         , x3, x4;
+    double		x2, x3, x4;
 
     if ((s1 == NULL) || (s2 == NULL))
 	nangles = 0;
@@ -179,7 +191,7 @@ small_Mie(double x, struct c_complex m, double *mu,
 
 
     {
-	double		    muj    , angle;
+	double		    muj, angle;
 	long		    j;
 
 	x3 *= 1.5;
@@ -205,15 +217,18 @@ small_Mie(double x, struct c_complex m, double *mu,
 
 
 
-void 
+void
 small_conducting_Mie(double x, struct c_complex m, double *mu,
 		     long nangles, struct c_complex *s1,
 		     struct c_complex *s2, double *qext, double *qsca,
 		     double *qback, double *g)
 {
+
+
+
     struct c_complex	ahat1, ahat2, bhat1, bhat2;
     struct c_complex	ss1;
-    double		x2         , x3, x4, muj, angle;
+    double		x2, x3, x4, muj, angle;
     long		j;
 
     if ((s1 == NULL) || (s2 == NULL))
@@ -260,18 +275,21 @@ small_conducting_Mie(double x, struct c_complex m, double *mu,
 
 
 
-void 
+void
 Mie(double x, struct c_complex m, double *mu, long nangles, struct c_complex *s1,
  struct c_complex *s2, double *qext, double *qsca, double *qback, double *g)
 {
 
+
+
+
     struct c_complex   *D;
     struct c_complex	z1, an, bn, bnm1, anm1, qbcalc;
-    double             *pi0, *pi1, *tau;
+    double	       *pi0, *pi1, *tau;
     struct c_complex	xi, xi0, xi1;
-    double		psi        , psi0, psi1;
-    double		alpha      , beta, factor;
-    long		n            , k, nstop, sign;
+    double		psi, psi0, psi1;
+    double		alpha, beta, factor;
+    long		n, k, nstop, sign;
 
     *qext = -1;
     *qsca = -1;
@@ -309,14 +327,22 @@ Mie(double x, struct c_complex m, double *mu, long nangles, struct c_complex *s1
 	mie_error("Program not validated for spheres with x>20000", 7);
 	return;
     }
+
+
+
     if ((m.re == 0) && (x < 0.1)) {
 	small_conducting_Mie(x, m, mu, nangles, s1, s2, qext, qsca, qback, g);
 	return;
     }
+
     if ((m.re > 0.0) && (c_abs(m) * x < 0.1)) {
 	small_Mie(x, m, mu, nangles, s1, s2, qext, qsca, qback, g);
 	return;
     }
+
+
+
+
     nstop = floor(x + 4.05 * pow(x, 0.33333) + 2.0);
 
 
@@ -334,7 +360,10 @@ Mie(double x, struct c_complex m, double *mu, long nangles, struct c_complex *s1
 	set_darray(tau, nangles, 0.0);
 	set_darray(pi1, nangles, 1.0);
     }
+
+
     if (m.re > 0) {
+
 	struct c_complex    z;
 
 	z = c_smul(x, m);
@@ -344,12 +373,17 @@ Mie(double x, struct c_complex m, double *mu, long nangles, struct c_complex *s1
 	    mie_error("Cannot allocate log array", 8);
 	    return;
 	}
+
 	if (m.re < 1 || m.re > 10 || fabs(m.im) > 10 ||
 	    fabs(x * m.im) >= 3.9 - 10.8 * m.re + 13.78 * m.re * m.re)
 	    Dn_down(z, nstop, D);
 	else
 	    Dn_up(z, nstop, D);
     }
+
+
+
+
     psi0 = sin(x);
     psi1 = psi0 / x - cos(x);
     xi0 = c_set(psi0, cos(x));
@@ -448,20 +482,24 @@ Mie(double x, struct c_complex m, double *mu, long nangles, struct c_complex *s1
 	free_darray(pi1);
 	free_darray(tau);
     }
+
+
 }
 
 
 
 
-void 
+void
 ez_Mie(double x, double n, double *qsca, double *g)
 {
+
+
     long		nangles = 0;
-    double             *mu = NULL;
+    double	       *mu = NULL;
     struct c_complex   *s1 = NULL;
     struct c_complex   *s2 = NULL;
     struct c_complex	m;
-    double		qext       , qback;
+    double		qext, qback;
 
     m.re = n;
     m.im = 0.0;
@@ -473,11 +511,13 @@ ez_Mie(double x, double n, double *qsca, double *g)
 
 
 
-void 
+void
 ez_Mie_Full(double x, double m_real, double m_imag, long nangles, double *mu,
 	 double *s1_real, double *s1_imag, double *s2_real, double *s2_imag,
 	    double *qext, double *qsca, double *qback, double *g)
 {
+
+
     struct c_complex   *s1 = NULL;
     struct c_complex   *s2 = NULL;
     struct c_complex	m;

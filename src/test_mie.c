@@ -10,7 +10,7 @@
 #include "mie_lobatto.h"
 #include "mie.h"
 
-int 
+int
 main()
 {
 
@@ -49,9 +49,9 @@ main()
 
 
     {
-	long		    nangles  , i;
+	long		    nangles, i;
 	struct c_complex   *s1, *s2, m;
-	double             *w, *mu, x, rho, qext, qsca, qback, g;
+	double		   *w, *mu, x, rho, qext, qsca, qback, g;
 
 	nangles = 10;
 	m.re = 1.55;
@@ -94,10 +94,10 @@ main()
 	long		    nangles = 0;
 	struct c_complex   *s1 = NULL;
 	struct c_complex   *s2 = NULL;
-	double             *mu = NULL;
+	double		   *mu = NULL;
 	struct c_complex    m;
 	double		    x = 50.0 * pi;
-	double		    qext   , qsca, qback, g;
+	double		    qext, qsca, qback, g;
 
 	printf("\n***********************************************\n");
 	printf("Second Mie Test -- Dave Table 2\n");
@@ -145,10 +145,10 @@ main()
 	long		    nangles = 0;
 	struct c_complex   *s1 = NULL;
 	struct c_complex   *s2 = NULL;
-	double             *mu = NULL;
+	double		   *mu = NULL;
 	struct c_complex    m;
 	double		    x = 20;
-	double		    qext   , qsca, qback, g;
+	double		    qext, qsca, qback, g;
 
 	printf("\n***********************************************\n");
 	printf("Third Mie Test -- van de Hulst page 161\n");
@@ -182,10 +182,10 @@ main()
 	long		    nangles = 0;
 	struct c_complex   *s1 = NULL;
 	struct c_complex   *s2 = NULL;
-	double             *mu = NULL;
+	double		   *mu = NULL;
 	struct c_complex    m;
 	double		    x = 20;
-	double		    qext   , qsca, qback, g;
+	double		    qext, qsca, qback, g;
 
 	printf("\n***********************************************\n");
 	printf("Fourth Mie Test -- van de Hulst page 277\n");
@@ -215,10 +215,10 @@ main()
 	long		    nangles = 0;
 	struct c_complex   *s1 = NULL;
 	struct c_complex   *s2 = NULL;
-	double             *mu = NULL;
+	double		   *mu = NULL;
 	struct c_complex    m;
 	double		    x;
-	double		    qext   , qsca, qback, g;
+	double		    qext, qsca, qback, g;
 
 	printf("\n***********************************************\n");
 	printf("Fifth Mie Test -- Wiscombe\n");
@@ -351,12 +351,12 @@ main()
 	long		    nangles = 7;
 	struct c_complex   *s1 = NULL;
 	struct c_complex   *s2 = NULL;
-	double             *mu = NULL;
+	double		   *mu = NULL;
 	struct c_complex    m;
 	double		    x;
-	double		    qext   , qsca, qback, g;
-	char               *form = "%7.4f %8.5f%+-8.5fi    %8.5f%+-8.5fi  Calc\n";
-	char               *form2 = "%7.4f %8.5f%+-8.5fi    %8.5f%+-8.5fi   Wiscombe\n\n";
+	double		    qext, qsca, qback, g;
+	char		   *form = "%7.4f %8.5f%+-8.5fi    %8.5f%+-8.5fi  Calc\n";
+	char		   *form2 = "%7.4f %8.5f%+-8.5fi    %8.5f%+-8.5fi   Wiscombe\n\n";
 	long		    i;
 
 	s1 = new_carray(nangles);
@@ -401,10 +401,10 @@ main()
 	long		    nangles = 0;
 	struct c_complex   *s1 = NULL;
 	struct c_complex   *s2 = NULL;
-	double             *mu = NULL;
+	double		   *mu = NULL;
 	struct c_complex    m;
 	double		    x = 20;
-	double		    qext   , qsca, qback, g;
+	double		    qext, qsca, qback, g;
 
 	printf("\n***********************************************\n");
 	printf("Small Mie Test\n");
@@ -452,9 +452,9 @@ main()
 	long		    nangles = 0;
 	struct c_complex   *s1 = NULL;
 	struct c_complex   *s2 = NULL;
-	double             *mu = NULL;
+	double		   *mu = NULL;
 	struct c_complex    m;
-	double		    x      , qext, qsca, qback, g, ref;
+	double		    x, qext, qsca, qback, g, ref;
 
 	printf("\n***********************************************\n");
 	printf("Backscattering Efficiency\n");

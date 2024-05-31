@@ -17,9 +17,11 @@ static long	    Lobatto_n_minus_1;
 
 
 
-static void 
+static void
 Lobatto_error(char *s)
 {
+
+
     printf("%s\n", s);
     exit(1);
 }
@@ -27,18 +29,22 @@ Lobatto_error(char *s)
 
 
 
-static double 
+static double
 Lobatto_fn1(double x)
 {
+
+
     return LegendrePnd(Lobatto_n_minus_1, x);
 }
 
 
 
 
-static void 
+static void
 Lobatto_fn2(double x, double *f, double *df)
 {
+
+
     *f = LegendrePnd(Lobatto_n_minus_1, x);
     *df = LegendrePndd(Lobatto_n_minus_1, x);
 }
@@ -47,11 +53,13 @@ Lobatto_fn2(double x, double *f, double *df)
 
 
 
-void 
+void
 Lobatto(double a, double b, double *x, double *w, long n)
 {
-    long		nby2         , n_odd, i;
-    double		xm         , xl, pnval;
+
+
+    long		nby2, n_odd, i;
+    double		xm, xl, pnval;
 
     if (n < 3)
 	Lobatto_error("Number of Lobatto quadrature points less than 3");
@@ -107,8 +115,8 @@ Lobatto(double a, double b, double *x, double *w, long n)
 
     default:
 	{
-	    long		nb           , ndiv, size;
-	    double		z          , *xb1, *xb2;
+	    long		nb, ndiv, size;
+	    double		z, *xb1, *xb2;
 
 	    Lobatto_n_minus_1 = n - 1;
 	    size = NSLICES;
@@ -153,6 +161,10 @@ Lobatto(double a, double b, double *x, double *w, long n)
 	pnval = LegendrePn(n - 1, 0.0);
 	w[i] = 2 / (n * (n - 1) * pnval * pnval);
     }
+
+
+
+
     for (i = 0; i <= nby2; i++) {
 	w[i] = w[n - i - 1];
 	x[i] = -x[n - i - 1];
@@ -169,4 +181,6 @@ Lobatto(double a, double b, double *x, double *w, long n)
 	    w[i] = xl * w[i];
 	}
     }
+
+
 }

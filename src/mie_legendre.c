@@ -3,10 +3,12 @@
 
 
 
-double 
+double
 LegendrePn(long n, double x)
 {
-    double		pk         , pkp1, pkm1;
+
+
+    double		pk, pkp1, pkm1;
     long		k;
 
     if (n <= 0)
@@ -33,11 +35,13 @@ LegendrePn(long n, double x)
 
 
 
-void 
+void
 LegendrePn_and_Pnm1(long n, double x, double *Pnm1Val, double *PnVal)
 {
+
+
     long		k;
-    double		Pk         , Pkp1;
+    double		Pk, Pkp1;
     double		Pkm1 = 1.0;
 
     *Pnm1Val = 1.0;
@@ -62,10 +66,12 @@ LegendrePn_and_Pnm1(long n, double x, double *Pnm1Val, double *PnVal)
 
 
 
-double 
+double
 LegendrePnd(long n, double x)
 {
-    double		p          , pminus, pplus;
+
+
+    double		p, pminus, pplus;
     long		i;
 
     if (n <= 0)
@@ -93,10 +99,12 @@ LegendrePnd(long n, double x)
 
 
 
-double 
+double
 LegendrePndd(long n, double x)
 {
-    double		p          , pminus, pplus;
+
+
+    double		p, pminus, pplus;
     long		m;
 
     if (n <= 1)

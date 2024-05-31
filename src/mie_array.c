@@ -7,9 +7,11 @@
 
 
 
-static void 
+static void
 array_error(char *s)
 {
+
+
     printf("Array -- %s\n", s);
     exit(1);
 }
@@ -17,10 +19,12 @@ array_error(char *s)
 
 
 
-double             *
+double		   *
 new_darray(long size)
 {
-    double             *a;
+
+
+    double	       *a;
 
     if (size <= 0)
 	array_error("Non-positive double array size chosen");
@@ -37,9 +41,11 @@ new_darray(long size)
 
 
 
-void 
+void
 free_darray(double *a)
 {
+
+
     if (a != NULL)
 	free(a - 1);
 }
@@ -47,10 +53,12 @@ free_darray(double *a)
 
 
 
-double             *
+double		   *
 copy_darray(double *a, long size)
 {
-    double             *b = NULL;
+
+
+    double	       *b = NULL;
 
     if (a == NULL)
 	return b;
@@ -65,9 +73,11 @@ copy_darray(double *a, long size)
 
 
 
-void 
+void
 set_darray(double *a, long size, double x)
 {
+
+
     long		j;
 
     if (a == NULL)
@@ -80,9 +90,11 @@ set_darray(double *a, long size, double x)
 
 
 
-void 
+void
 min_max_darray(double *a, long size, double *min, double *max)
 {
+
+
     long		j;
 
     if (a == NULL)
@@ -105,10 +117,12 @@ min_max_darray(double *a, long size, double *min, double *max)
 
 
 
-void 
+void
 sort_darray(double *a, long size)
 {
-    long		i            , ir, j, l;
+
+
+    long		i, ir, j, l;
     double		aa;
 
     if (a == NULL)
@@ -148,9 +162,11 @@ sort_darray(double *a, long size)
 
 
 
-void 
+void
 print_darray(double *a, long size, long ilow, long ihigh)
 {
+
+
     long		j;
 
     if (a == NULL)

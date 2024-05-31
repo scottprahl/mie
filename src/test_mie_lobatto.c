@@ -5,12 +5,12 @@
 #include "mie_array.h"
 #include "mie_lobatto.h"
 
-int 
+int
 main()
 {
-    double             *x, *w;
+    double	       *x, *w;
     double		sum;
-    long		i            , n;
+    long		i, n;
 
     printf("testing n=10 --- sum should be 2\n");
     sum = 0;
